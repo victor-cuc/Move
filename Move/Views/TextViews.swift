@@ -18,15 +18,16 @@ struct ButtonText: View {
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 16.0)
-                                .fill(Color.accentColor))
+                                .fill(Color.accentColor)
+                                .shadow(color: Color.black.opacity(0.5), radius: 20, x: 7, y: 7))
                 .foregroundColor(.white)
         } else {
             Text(text)
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 16.0)
-                                .stroke(Color.accentColor.opacity(0.4), lineWidth: 2.5))
-                .foregroundColor(Color("TextColor").opacity(0.6))
+                                .stroke(Color.accentColor.opacity(0.5), lineWidth: 2.5))
+                .opacity(0.5)
         }
     }
 }
