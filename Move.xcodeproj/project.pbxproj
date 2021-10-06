@@ -8,23 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		579E354A270C32FB007D65C6 /* MoveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579E3549270C32FB007D65C6 /* MoveApp.swift */; };
-		579E354C270C32FB007D65C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579E354B270C32FB007D65C6 /* ContentView.swift */; };
+		579E354C270C32FB007D65C6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579E354B270C32FB007D65C6 /* OnboardingView.swift */; };
 		579E354E270C32FF007D65C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579E354D270C32FF007D65C6 /* Assets.xcassets */; };
 		579E3551270C32FF007D65C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579E3550270C32FF007D65C6 /* Preview Assets.xcassets */; };
 		579E3559270C3850007D65C6 /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579E3558270C3850007D65C6 /* TextViews.swift */; };
 		579E355B270C6123007D65C6 /* BackgroundViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579E355A270C6123007D65C6 /* BackgroundViews.swift */; };
 		579E355E270C66AB007D65C6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579E355D270C66AB007D65C6 /* Constants.swift */; };
+		57F152C3270DA4A700DB2901 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F152C2270DA4A700DB2901 /* OnboardingViewModel.swift */; };
+		57F152D2270DB25900DB2901 /* BaiJamjuree-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152C6270DB25800DB2901 /* BaiJamjuree-ExtraLight.ttf */; };
+		57F152D3270DB25900DB2901 /* BaiJamjuree-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152C7270DB25800DB2901 /* BaiJamjuree-LightItalic.ttf */; };
+		57F152D4270DB25900DB2901 /* BaiJamjuree-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152C8270DB25800DB2901 /* BaiJamjuree-Medium.ttf */; };
+		57F152D5270DB25900DB2901 /* BaiJamjuree-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152C9270DB25800DB2901 /* BaiJamjuree-MediumItalic.ttf */; };
+		57F152D6270DB25900DB2901 /* BaiJamjuree-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152CA270DB25800DB2901 /* BaiJamjuree-Regular.ttf */; };
+		57F152D7270DB25900DB2901 /* BaiJamjuree-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152CB270DB25800DB2901 /* BaiJamjuree-SemiBold.ttf */; };
+		57F152D8270DB25900DB2901 /* BaiJamjuree-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152CC270DB25800DB2901 /* BaiJamjuree-SemiBoldItalic.ttf */; };
+		57F152D9270DB25900DB2901 /* BaiJamjuree-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152CD270DB25800DB2901 /* BaiJamjuree-BoldItalic.ttf */; };
+		57F152DA270DB25900DB2901 /* BaiJamjuree-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152CE270DB25800DB2901 /* BaiJamjuree-Light.ttf */; };
+		57F152DB270DB25900DB2901 /* BaiJamjuree-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152CF270DB25800DB2901 /* BaiJamjuree-Bold.ttf */; };
+		57F152DC270DB25900DB2901 /* BaiJamjuree-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152D0270DB25800DB2901 /* BaiJamjuree-Italic.ttf */; };
+		57F152DD270DB25900DB2901 /* BaiJamjuree-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152D1270DB25900DB2901 /* BaiJamjuree-ExtraLightItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		579E3546270C32FB007D65C6 /* Move.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Move.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		579E3549270C32FB007D65C6 /* MoveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveApp.swift; sourceTree = "<group>"; };
-		579E354B270C32FB007D65C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		579E354B270C32FB007D65C6 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		579E354D270C32FF007D65C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		579E3550270C32FF007D65C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		579E3558270C3850007D65C6 /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		579E355A270C6123007D65C6 /* BackgroundViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViews.swift; sourceTree = "<group>"; };
 		579E355D270C66AB007D65C6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		57F152C2270DA4A700DB2901 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		57F152C6270DB25800DB2901 /* BaiJamjuree-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-ExtraLight.ttf"; sourceTree = "<group>"; };
+		57F152C7270DB25800DB2901 /* BaiJamjuree-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-LightItalic.ttf"; sourceTree = "<group>"; };
+		57F152C8270DB25800DB2901 /* BaiJamjuree-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-Medium.ttf"; sourceTree = "<group>"; };
+		57F152C9270DB25800DB2901 /* BaiJamjuree-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-MediumItalic.ttf"; sourceTree = "<group>"; };
+		57F152CA270DB25800DB2901 /* BaiJamjuree-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-Regular.ttf"; sourceTree = "<group>"; };
+		57F152CB270DB25800DB2901 /* BaiJamjuree-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-SemiBold.ttf"; sourceTree = "<group>"; };
+		57F152CC270DB25800DB2901 /* BaiJamjuree-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		57F152CD270DB25800DB2901 /* BaiJamjuree-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-BoldItalic.ttf"; sourceTree = "<group>"; };
+		57F152CE270DB25800DB2901 /* BaiJamjuree-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-Light.ttf"; sourceTree = "<group>"; };
+		57F152CF270DB25800DB2901 /* BaiJamjuree-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-Bold.ttf"; sourceTree = "<group>"; };
+		57F152D0270DB25800DB2901 /* BaiJamjuree-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-Italic.ttf"; sourceTree = "<group>"; };
+		57F152D1270DB25900DB2901 /* BaiJamjuree-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		57F152F8270DB48000DB2901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,10 +84,12 @@
 		579E3548270C32FB007D65C6 /* Move */ = {
 			isa = PBXGroup;
 			children = (
+				57F152F8270DB48000DB2901 /* Info.plist */,
+				57F152C4270DB22800DB2901 /* Resources */,
+				57F152C1270DA44100DB2901 /* ViewModels */,
 				579E355C270C669D007D65C6 /* Utils */,
 				579E3557270C3810007D65C6 /* Views */,
 				579E3549270C32FB007D65C6 /* MoveApp.swift */,
-				579E354B270C32FB007D65C6 /* ContentView.swift */,
 				579E354D270C32FF007D65C6 /* Assets.xcassets */,
 				579E354F270C32FF007D65C6 /* Preview Content */,
 			);
@@ -78,6 +107,7 @@
 		579E3557270C3810007D65C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				579E354B270C32FB007D65C6 /* OnboardingView.swift */,
 				579E3558270C3850007D65C6 /* TextViews.swift */,
 				579E355A270C6123007D65C6 /* BackgroundViews.swift */,
 			);
@@ -90,6 +120,41 @@
 				579E355D270C66AB007D65C6 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		57F152C1270DA44100DB2901 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				57F152C2270DA4A700DB2901 /* OnboardingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		57F152C4270DB22800DB2901 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				57F152C5270DB23500DB2901 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		57F152C5270DB23500DB2901 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				57F152CF270DB25800DB2901 /* BaiJamjuree-Bold.ttf */,
+				57F152CD270DB25800DB2901 /* BaiJamjuree-BoldItalic.ttf */,
+				57F152C6270DB25800DB2901 /* BaiJamjuree-ExtraLight.ttf */,
+				57F152D1270DB25900DB2901 /* BaiJamjuree-ExtraLightItalic.ttf */,
+				57F152D0270DB25800DB2901 /* BaiJamjuree-Italic.ttf */,
+				57F152CE270DB25800DB2901 /* BaiJamjuree-Light.ttf */,
+				57F152C7270DB25800DB2901 /* BaiJamjuree-LightItalic.ttf */,
+				57F152C8270DB25800DB2901 /* BaiJamjuree-Medium.ttf */,
+				57F152C9270DB25800DB2901 /* BaiJamjuree-MediumItalic.ttf */,
+				57F152CA270DB25800DB2901 /* BaiJamjuree-Regular.ttf */,
+				57F152CB270DB25800DB2901 /* BaiJamjuree-SemiBold.ttf */,
+				57F152CC270DB25800DB2901 /* BaiJamjuree-SemiBoldItalic.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,8 +215,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57F152D2270DB25900DB2901 /* BaiJamjuree-ExtraLight.ttf in Resources */,
+				57F152D4270DB25900DB2901 /* BaiJamjuree-Medium.ttf in Resources */,
+				57F152DD270DB25900DB2901 /* BaiJamjuree-ExtraLightItalic.ttf in Resources */,
+				57F152D3270DB25900DB2901 /* BaiJamjuree-LightItalic.ttf in Resources */,
 				579E3551270C32FF007D65C6 /* Preview Assets.xcassets in Resources */,
 				579E354E270C32FF007D65C6 /* Assets.xcassets in Resources */,
+				57F152DC270DB25900DB2901 /* BaiJamjuree-Italic.ttf in Resources */,
+				57F152DB270DB25900DB2901 /* BaiJamjuree-Bold.ttf in Resources */,
+				57F152D8270DB25900DB2901 /* BaiJamjuree-SemiBoldItalic.ttf in Resources */,
+				57F152D6270DB25900DB2901 /* BaiJamjuree-Regular.ttf in Resources */,
+				57F152D9270DB25900DB2901 /* BaiJamjuree-BoldItalic.ttf in Resources */,
+				57F152D5270DB25900DB2901 /* BaiJamjuree-MediumItalic.ttf in Resources */,
+				57F152DA270DB25900DB2901 /* BaiJamjuree-Light.ttf in Resources */,
+				57F152D7270DB25900DB2901 /* BaiJamjuree-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +240,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				579E355E270C66AB007D65C6 /* Constants.swift in Sources */,
-				579E354C270C32FB007D65C6 /* ContentView.swift in Sources */,
+				57F152C3270DA4A700DB2901 /* OnboardingViewModel.swift in Sources */,
+				579E354C270C32FB007D65C6 /* OnboardingView.swift in Sources */,
 				579E354A270C32FB007D65C6 /* MoveApp.swift in Sources */,
 				579E3559270C3850007D65C6 /* TextViews.swift in Sources */,
 				579E355B270C6123007D65C6 /* BackgroundViews.swift in Sources */,
@@ -300,6 +378,7 @@
 				DEVELOPMENT_TEAM = BGL98V7Y68;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Move/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -330,6 +409,7 @@
 				DEVELOPMENT_TEAM = BGL98V7Y68;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Move/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
