@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @State private var buttonIsDisabled = false
+    @ObservedObject var viewModel = OnboardingViewModel()
     
     var body: some View {
         ZStack {
@@ -25,26 +25,32 @@ struct OnboardingView: View {
     var detailContainer: some View {
         VStack {
             HStack {
-                Text("Safety")
+                Text(viewModel.currentStep.title)
                     .font(Font.Custom.bold.with(size: 32))
                     .bold()
                 Spacer()
-                Text("Skip")
-                    .font(Font.Custom.semibold.with(size: 14))
-                    .foregroundColor(Constants.Colors.secondaryTextColor)
+                Button {
+                    viewModel.getStarted()
+                } label: {
+                    Text("Skip")
+                        .font(Font.Custom.semibold.with(size: 14))
+                        .foregroundColor(Constants.Colors.secondaryTextColor)
+                }
             }
             .padding(.bottom, 12)
             
-            Text("Please wear a helmet and protect yourself while riding")
+            Text(viewModel.currentStep.text)
                 .font(Font.Custom.medium.with(size: 16))
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
             HStack {
-                Text("— • • • •")
+                StepIndicatorView(numberOfSteps: viewModel.steps.count, currentStepIndex: viewModel.currentStepIndex)
                 Spacer()
-                Button(action: {}) {
-                    ButtonText(text: "Next",symbol: "arrow.forward" ,isDisabled: $buttonIsDisabled)
+                Button(action: {
+                    viewModel.nextStep()
+                }) {
+                    ButtonText(text: viewModel.currentStep.buttonLabelText, symbol: "arrow.forward", isDisabled: .constant(false))
                 }
             }
         }
@@ -55,7 +61,7 @@ struct OnboardingView: View {
     
     var imageContainer: some View {
         Color.white.overlay (
-            Image("onboarding-safety")
+            Image(viewModel.currentStep.imageName)
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
