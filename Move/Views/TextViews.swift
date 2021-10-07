@@ -21,7 +21,7 @@ struct ButtonText: View {
                     image.font(Font.Custom.semibold.with(size: 16))
                 }
             }
-//                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 16.0)
                                 .fill(Color.accentColor)
@@ -29,7 +29,7 @@ struct ButtonText: View {
                 .foregroundColor(.white)
         } else {
             Text(text)
-//                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 16.0)
                                 .stroke(Color.accentColor.opacity(0.5), lineWidth: 2.5))
