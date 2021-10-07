@@ -33,7 +33,7 @@ struct ButtonText: View {
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 16.0)
                                 .stroke(Color.accentColor.opacity(0.5), lineWidth: 2.5))
-                .opacity(0.5)
+                .opacity(Constants.disabledTextOpacity)
         }
     }
 }

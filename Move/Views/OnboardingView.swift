@@ -34,7 +34,7 @@ struct OnboardingView: View {
                 } label: {
                     Text("Skip")
                         .font(Font.Custom.semibold.with(size: 14))
-                        .foregroundColor(Constants.Colors.secondaryTextColor)
+                        .foregroundColor(Constants.Colors.primaryTextColor).opacity(Constants.disabledTextOpacity)
                 }
             }
             .padding(.bottom, 12)
