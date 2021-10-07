@@ -56,7 +56,7 @@ struct SignUpView: View {
         VStack (spacing: 20) {
             FormField(label: "Email", text: $inputtedEmail)
             FormField(label: "Username", text: $inputtedUsername)
-            FormField(label: "Password", text: $inputtedPassword, guidanceText: "6 characters long.", secure: true)
+            FormField(label: "Password", text: $inputtedPassword, guidanceText: "Use a strong password (min. 8 characters and use symbols)", secure: true)
         }
     }
     
