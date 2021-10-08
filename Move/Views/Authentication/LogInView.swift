@@ -1,17 +1,16 @@
 //
-//  File.swift
+//  LogInView.swift
 //  Move
 //
-//  Created by Victor Cuc on 07/10/2021.
+//  Created by Victor Cuc on 08/10/2021.
 //
 
 import SwiftUI
 
-struct SignUpView: View {
+struct LogInView: View {
     
     @State var isButtonDisabled = true
     @State var inputtedEmail = ""
-    @State var inputtedUsername = ""
     @State var inputtedPassword = ""
     
     var body: some View {
@@ -21,8 +20,8 @@ struct SignUpView: View {
                 logo
                 titleAndDescription
                 form
-                termsAndConditions
-                getStartedButton
+                forgotPassword
+                logInButton
                 logInInstead
                 Spacer()
             }
@@ -43,10 +42,10 @@ struct SignUpView: View {
     
     var titleAndDescription: some View {
         VStack(alignment: .leading) {
-            Text("Let's get started")
+            Text("Log In")
                 .font(.Custom.bold.with(size: 32))
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-            Text("Sign up or log in and start riding right away")
+            Text("Enter your account credentials and start riding away")
                 .font(.Custom.medium.with(size: 20))
                 .opacity(Constants.disabledTextOpacity)
         }
@@ -55,41 +54,25 @@ struct SignUpView: View {
     var form: some View {
         VStack (spacing: 20) {
             FormField(label: "Email", text: $inputtedEmail)
-            FormField(label: "Username", text: $inputtedUsername)
-            FormField(label: "Password", text: $inputtedPassword, guidanceText: "Use a strong password (min. 8 characters and use symbols)", secure: true)
+            FormField(label: "Password", text: $inputtedPassword, secure: true)
         }
     }
     
-    var termsAndConditions: some View {
-        VStack (alignment: .leading) {
-            Text("By continuing you agree to Move's ")
-                .font(.Custom.regular.with(size: 12))
-            HStack (spacing: 0) {
-                Button {
-                    print("Terms and conditions")
-                } label: {
-                    Text("Terms and Conditions")
-                        .font(.Custom.semibold.with(size: 12))
-                        .underline()
-                }
-                Text(" and ")
-                    .font(.Custom.regular.with(size: 12))
-                Button {
-                    print("Privacy Policy")
-                } label: {
-                    Text("Privacy Policy")
-                        .font(.Custom.semibold.with(size: 12))
-                        .underline()
-                }
-            }
-        }
-    }
-    
-    var getStartedButton: some View {
+    var forgotPassword: some View {
         Button {
-            print("Get Started button pressed")
+            print("forgot password")
         } label: {
-            ButtonText(text: "Get started", isDisabled: $isButtonDisabled)
+            Text("Forgot your password?")
+                .font(.Custom.regular.with(size: 12))
+                .underline()
+        }
+    }
+    
+    var logInButton: some View {
+        Button {
+            print("Log In")
+        } label: {
+            ButtonText(text: "Log In", isDisabled: $isButtonDisabled)
 //                .frame(maxWidth: .infinity)
         }
         .disabled(isButtonDisabled)
@@ -98,12 +81,12 @@ struct SignUpView: View {
     var logInInstead: some View {
         HStack (spacing: 0) {
             Spacer()
-            Text("You already have an account? You can ")
+            Text("Don’t have an account? You can ")
                 .font(.Custom.regular.with(size: 12))
             Button {
-                print("Log in screen to be shown")
+                print("Sign up screen to be shown")
             } label: {
-                Text("log in here")
+                Text("start with one here")
                     .font(.Custom.semibold.with(size: 12))
                     .underline()
             }
@@ -113,9 +96,9 @@ struct SignUpView: View {
     
 }
 
-struct SignUpView_Previews: PreviewProvider {
+struct LogInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
-        SignUpView().preferredColorScheme(.dark)
+        LogInView()
+        LogInView().preferredColorScheme(.dark)
     }
 }
