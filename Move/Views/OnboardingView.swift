@@ -11,14 +11,29 @@ struct OnboardingView: View {
     @ObservedObject var viewModel = OnboardingViewModel()
     
     var body: some View {
-        ZStack {
-            DefaultBackgroundView()
-            VStack (spacing: 16) {
-                imageContainer
-                detailContainer
-                    .frame(minHeight: 320)
+        NavigationView {
+            ZStack {
+                NavigationLink(
+                    isActive: $viewModel.moveToNextScreen,
+                    destination: {
+                        SignUpView()
+                            .navigationBarHidden(true)
+                            .navigationBarBackButtonHidden(true)
+                    },
+                    label: {
+                        EmptyView()
+                    }
+                )
+                .hidden()
+                DefaultBackgroundView()
+                VStack (spacing: 16) {
+                    imageContainer
+                    detailContainer
+                        .frame(minHeight: 320)
+                }
+                .foregroundColor(Constants.Colors.primaryTextColor)
             }
-            .foregroundColor(Constants.Colors.primaryTextColor)
+            .navigationBarHidden(true)
         }
     }
     

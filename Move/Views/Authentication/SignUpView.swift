@@ -29,6 +29,7 @@ struct SignUpView: View {
             .foregroundColor(.white)
             .padding(24)
         }
+        
     }
     
     var logo: some View {
@@ -90,18 +91,20 @@ struct SignUpView: View {
             print("Get Started button pressed")
         } label: {
             ButtonText(text: "Get started", isDisabled: $isButtonDisabled)
-//                .frame(maxWidth: .infinity)
+            //                .frame(maxWidth: .infinity)
         }
         .disabled(isButtonDisabled)
     }
-
+    
     var logInInstead: some View {
         HStack (spacing: 0) {
             Spacer()
             Text("You already have an account? You can ")
                 .font(.Custom.regular.with(size: 12))
-            Button {
-                print("Log in screen to be shown")
+            NavigationLink {
+                LogInView()
+                    .navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
             } label: {
                 Text("log in here")
                     .font(.Custom.semibold.with(size: 12))

@@ -16,6 +16,7 @@ struct OnboardingStep: Equatable {
 
 class OnboardingViewModel: ObservableObject {
     
+    
     let steps: [OnboardingStep] = [
         OnboardingStep(title: "Safety", text: "Please wear a helmet and protect yourself while riding.", buttonLabelText: "Next", imageName: "onboarding-safety"),
         OnboardingStep(title: "Scan", text: "Scan the QR code or NFC sticker on top of the scooter to unlock and ride.", buttonLabelText: "Next", imageName: "onboarding-scan"),
@@ -23,6 +24,8 @@ class OnboardingViewModel: ObservableObject {
         OnboardingStep(title: "Parking", text: "If convenient, park at a bike rack. If not, park close to the edge of the sidewalk closest to the street. Do not block sidewalks, doors or ramps.", buttonLabelText: "Next", imageName: "onboarding-parking"),
         OnboardingStep(title: "Rules", text: "You must be 18 years or and older with a valid driving licence to operate a scooter. Please follow all street signs, signals and markings, and obey local traffic laws.", buttonLabelText: "Get Started", imageName: "onboarding-rules")
     ]
+    
+    @Published var moveToNextScreen = false
     @Published var currentStepIndex: Int
     
     var currentStep: OnboardingStep {
@@ -42,6 +45,6 @@ class OnboardingViewModel: ObservableObject {
     }
     
     func getStarted() {
-        print("gatStarted() - To be implemented")
+        moveToNextScreen = true
     }
 }

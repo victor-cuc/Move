@@ -83,8 +83,10 @@ struct LogInView: View {
             Spacer()
             Text("Don’t have an account? You can ")
                 .font(.Custom.regular.with(size: 12))
-            Button {
-                print("Sign up screen to be shown")
+            NavigationLink {
+                SignUpView()
+                    .navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
             } label: {
                 Text("start with one here")
                     .font(.Custom.semibold.with(size: 12))
