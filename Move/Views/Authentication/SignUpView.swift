@@ -66,22 +66,24 @@ struct SignUpView: View {
             Text("By continuing you agree to Move's ")
                 .font(.Custom.regular.with(size: 12))
             HStack (spacing: 0) {
-                Button {
-                    print("Terms and conditions")
-                } label: {
-                    Text("Terms and Conditions")
-                        .font(.Custom.semibold.with(size: 12))
-                        .underline()
-                }
+                Link(
+                    destination: URL(string: "http://tapptitude.com")!,
+                    label: {
+                        Text("Terms and Conditions ")
+                            .font(.Custom.semibold.with(size: 12))
+                            .underline()
+                    }
+                )
                 Text(" and ")
                     .font(.Custom.regular.with(size: 12))
-                Button {
-                    print("Privacy Policy")
-                } label: {
-                    Text("Privacy Policy")
-                        .font(.Custom.semibold.with(size: 12))
-                        .underline()
-                }
+                Link(
+                    destination: URL(string: "http://tapptitude.com")!,
+                    label: {
+                        Text("Privacy Policy")
+                            .font(.Custom.semibold.with(size: 12))
+                            .underline()
+                    }
+                )
             }
         }
     }
@@ -93,7 +95,7 @@ struct SignUpView: View {
             ButtonText(text: "Get started", isDisabled: $isButtonDisabled)
             //                .frame(maxWidth: .infinity)
         }
-        .disabled(isButtonDisabled)
+        .disabled(inputtedEmail.isEmpty || inputtedUsername.isEmpty || inputtedPassword.isEmpty)
     }
     
     var logInInstead: some View {
