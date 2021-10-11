@@ -10,8 +10,11 @@ import SwiftUI
 struct SignUpView: View {
     
     @State var inputtedEmail = ""
-    @State var inputtedUsername = ""
+    @State var emailError: String?
     @State var inputtedPassword = ""
+    @State var passwordError: String?
+    @State var inputtedUsername = ""
+    @State var usernameError: String?
     
     var body: some View {
         ZStack {
@@ -54,9 +57,9 @@ struct SignUpView: View {
     
     var form: some View {
         VStack (spacing: 20) {
-            FormField(label: "Email", text: $inputtedEmail)
-            FormField(label: "Username", text: $inputtedUsername)
-            FormField(label: "Password", text: $inputtedPassword, guidanceText: "Use a strong password (min. 8 characters and use symbols)", secure: true)
+            FormField(label: "Email", text: $inputtedEmail, error: $emailError)
+            FormField(label: "Username", text: $inputtedUsername, error: $usernameError)
+            FormField(label: "Password", text: $inputtedPassword, error: $passwordError, guidanceText: "Use a strong password (min. 8 characters and use symbols)", secure: true)
         }
     }
     
@@ -90,6 +93,7 @@ struct SignUpView: View {
     var getStartedButton: some View {
         Button {
             print("Get Started button pressed")
+            validateForm()
         } label: {
             HStack {
                 Text("Get Started")
@@ -118,6 +122,33 @@ struct SignUpView: View {
         }
     }
     
+    private func validateForm() {
+        emailError = nil
+        usernameError = nil
+        passwordError = nil
+
+        if inputtedEmail.isEmpty {
+            emailError = "Email is empty"
+        } else if !self.isValidEmail(inputtedEmail) {
+            emailError = "Email is invalid"
+        }
+        
+        if inputtedUsername.isEmpty {
+            usernameError = "Username is empty"
+        }
+        
+        if inputtedPassword.isEmpty {
+            passwordError = "Password is empty"
+        } else if inputtedPassword.count < 8 {
+            passwordError = "Password must contain at least 8 characters"
+        }
+    }
+    
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
 }
 
 struct SignUpView_Previews: PreviewProvider {

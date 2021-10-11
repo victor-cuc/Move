@@ -12,7 +12,9 @@ struct LogInView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var inputtedEmail = ""
+    @State var emailError: String?
     @State var inputtedPassword = ""
+    @State var passwordError: String?
     
     var body: some View {
         ZStack {
@@ -54,8 +56,8 @@ struct LogInView: View {
     
     var form: some View {
         VStack (spacing: 20) {
-            FormField(label: "Email", text: $inputtedEmail)
-            FormField(label: "Password", text: $inputtedPassword, secure: true)
+            FormField(label: "Email", text: $inputtedEmail, error: $emailError)
+            FormField(label: "Password", text: $inputtedPassword, error: $passwordError, secure: true)
         }
     }
     
@@ -71,6 +73,7 @@ struct LogInView: View {
     
     var logInButton: some View {
         Button {
+            validateForm()
             print("Log in button pressed")
         } label: {
             HStack {
@@ -98,6 +101,26 @@ struct LogInView: View {
         }
     }
     
+    private func validateForm() {
+        emailError = nil
+        passwordError = nil
+
+        if inputtedEmail.isEmpty {
+            emailError = "Email is empty"
+        } else if !self.isValidEmail(inputtedEmail) {
+            emailError = "Email is invalid"
+        }
+        
+        if inputtedPassword.isEmpty {
+            passwordError = "Password is empty"
+        }
+    }
+    
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
 }
 
 struct LogInView_Previews: PreviewProvider {

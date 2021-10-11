@@ -11,6 +11,7 @@ struct FormField: View {
     
     let label: String
     @Binding var text: String
+    @Binding var error: String?
     var guidanceText: String?
     var secure = false
     @State private var isEditing = false
@@ -33,39 +34,34 @@ struct FormField: View {
                 }
                 .font(.Custom.medium.with(size: 16))
             }
-            Rectangle()
-                .frame(height: isEditing ? 2 : 1)
-                .opacity(isEditing ? 1 : Constants.disabledTextOpacity)
             
-            if guidanceText != nil, isEditing {
-                Text(guidanceText!)
+            if error != nil {
+                underline
+                    .foregroundColor(Constants.Colors.errorColor)
+                Text(error!)
                     .font(.Custom.regular.with(size: 12))
-                    .opacity(Constants.disabledTextOpacity)
+                    .foregroundColor(Constants.Colors.errorColor)
+            } else {
+                underline
+                if guidanceText != nil, isEditing {
+                    Text(guidanceText!)
+                        .font(.Custom.regular.with(size: 12))
+                }
             }
         }
         .autocapitalization(.none)
     }
-}
-
-extension FormField {
-    enum Style {
-        case light
-        case dark
-        
-        var foregroundColor: Color {
-            switch self {
-            case .light:
-                return Color.white
-            case .dark:
-                return Constants.Colors.darkColor
-            }
-        }
+    
+    var underline: some View {
+        Rectangle()
+            .frame(height: isEditing || error != nil ? 2 : 1)
+            .opacity(isEditing ? 1 : Constants.disabledTextOpacity)
     }
 }
 
 struct FormField_Previews: PreviewProvider {
     static var previews: some View {
-        FormField(label: "Email", text: .constant(""), guidanceText: "Hello add", secure: true).padding()
-        FormField(label: "Email", text: .constant("ffffff"), guidanceText: "Hello add", secure: true).preferredColorScheme(.dark).padding()
+        FormField(label: "Email", text: .constant(""), error: .constant(nil), guidanceText: "Hello add", secure: true).padding()
+        FormField(label: "Email", text: .constant("ffffff"), error: .constant(nil), guidanceText: "Hello add", secure: true).preferredColorScheme(.dark).padding()
     }
 }
