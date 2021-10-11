@@ -65,8 +65,12 @@ struct OnboardingView: View {
                 Button(action: {
                     viewModel.nextStep()
                 }) {
-                    ButtonText(text: viewModel.currentStep.buttonLabelText, symbol: "arrow.forward", isDisabled: .constant(false))
+                    HStack {
+                        Text(viewModel.currentStep.buttonLabelText)
+                        Image(systemName: "arrow.forward")
+                    }
                 }
+                .buttonStyle(MainButtonStyle())
             }
         }
         .padding(EdgeInsets(top: 24, leading: 24, bottom: 40, trailing: 24))

@@ -11,7 +11,6 @@ struct LogInView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var isButtonDisabled = true
     @State var inputtedEmail = ""
     @State var inputtedPassword = ""
     
@@ -72,12 +71,15 @@ struct LogInView: View {
     
     var logInButton: some View {
         Button {
-            print("Log In")
+            print("Log in button pressed")
         } label: {
-            ButtonText(text: "Log In", isDisabled: $isButtonDisabled)
-//                .frame(maxWidth: .infinity)
+            HStack {
+                Text("Log in")
+            }
+            .frame(maxWidth: .infinity)
         }
-        .disabled(isButtonDisabled)
+        .buttonStyle(MainButtonStyle())
+        .disabled(inputtedEmail.isEmpty ||  inputtedPassword.isEmpty)
     }
 
     var logInInstead: some View {

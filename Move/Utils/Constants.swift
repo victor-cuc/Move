@@ -15,6 +15,7 @@ enum Constants {
         public static let primaryTextColor = Color("PrimaryTextColor")
         public static let secondaryTextColor = Color("SecondaryTextColor")
         public static let darkColor = Color("DarkColor")
+        public static let accentColor = Color("AccentColor")
     }
     
     public static let disabledTextOpacity = 0.5

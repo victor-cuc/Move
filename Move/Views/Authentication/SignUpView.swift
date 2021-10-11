@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    @State var isButtonDisabled = true
     @State var inputtedEmail = ""
     @State var inputtedUsername = ""
     @State var inputtedPassword = ""
@@ -92,9 +91,12 @@ struct SignUpView: View {
         Button {
             print("Get Started button pressed")
         } label: {
-            ButtonText(text: "Get started", isDisabled: $isButtonDisabled)
-            //                .frame(maxWidth: .infinity)
+            HStack {
+                Text("Get Started")
+            }
+            .frame(maxWidth: .infinity)
         }
+        .buttonStyle(MainButtonStyle())
         .disabled(inputtedEmail.isEmpty || inputtedUsername.isEmpty || inputtedPassword.isEmpty)
     }
     
