@@ -16,6 +16,12 @@ struct LogInView: View {
     @State var inputtedPassword = ""
     @State var passwordError: String?
     
+    private enum Field: Int, Hashable {
+        case email, password
+    }
+    
+    @FocusState private var focusedField: Field?
+    
     var body: some View {
         ZStack {
             PurpleBackgroundView()
@@ -57,7 +63,15 @@ struct LogInView: View {
     var form: some View {
         VStack (spacing: 20) {
             FormField(label: "Email", text: $inputtedEmail, error: $emailError)
+                .focused($focusedField, equals: .email)
+                .submitLabel(.next)
+                .onSubmit {
+                    focusedField = .password
+                }
+            
             FormField(label: "Password", text: $inputtedPassword, error: $passwordError, secure: true)
+                .focused($focusedField, equals: .password)
+                .submitLabel(.done)
         }
     }
     

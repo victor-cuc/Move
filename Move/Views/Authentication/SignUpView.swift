@@ -16,6 +16,12 @@ struct SignUpView: View {
     @State var inputtedUsername = ""
     @State var usernameError: String?
     
+    private enum Field: Int, Hashable {
+        case email, username, password
+    }
+    
+    @FocusState private var focusedField: Field?
+    
     var body: some View {
         ZStack {
             PurpleBackgroundView()
@@ -58,8 +64,20 @@ struct SignUpView: View {
     var form: some View {
         VStack (spacing: 20) {
             FormField(label: "Email", text: $inputtedEmail, error: $emailError)
+                .focused($focusedField, equals: .email)
+                .submitLabel(.next)
+                .onSubmit {
+                    focusedField = .username
+                }
             FormField(label: "Username", text: $inputtedUsername, error: $usernameError)
+                .focused($focusedField, equals: .username)
+                .submitLabel(.next)
+                .onSubmit {
+                    focusedField = .password
+                }
             FormField(label: "Password", text: $inputtedPassword, error: $passwordError, guidanceText: "Use a strong password (min. 8 characters and use symbols)", secure: true)
+                .focused($focusedField, equals: .password)
+                .submitLabel(.done)
         }
     }
     
