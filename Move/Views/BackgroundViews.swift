@@ -15,6 +15,7 @@ struct PurpleBackgroundView: View {
                     .resizable()
                     .scaledToFill()
             )
+            .clipped()
             .ignoresSafeArea()
     }
 }
