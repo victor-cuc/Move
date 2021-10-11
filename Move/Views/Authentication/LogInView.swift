@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LogInView: View {
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State var isButtonDisabled = true
     @State var inputtedEmail = ""
     @State var inputtedPassword = ""
@@ -83,10 +85,8 @@ struct LogInView: View {
             Spacer()
             Text("Don’t have an account? You can ")
                 .font(.Custom.regular.with(size: 12))
-            NavigationLink {
-                SignUpView()
-                    .navigationBarHidden(true)
-                    .navigationBarBackButtonHidden(true)
+            Button {
+                self.presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("start with one here")
                     .font(.Custom.semibold.with(size: 12))
