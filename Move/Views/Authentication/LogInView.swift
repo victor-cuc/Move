@@ -11,10 +11,7 @@ struct LogInView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var inputtedEmail = ""
-    @State var emailError: String?
-    @State var inputtedPassword = ""
-    @State var passwordError: String?
+    @ObservedObject var viewModel = LogInViewModel()
     
     private enum Field: Int, Hashable {
         case email, password
@@ -62,14 +59,14 @@ struct LogInView: View {
     
     var form: some View {
         VStack (spacing: 20) {
-            FormField(label: "Email", text: $inputtedEmail, error: $emailError)
+            FormField(label: "Email", text: $viewModel.email, error: $viewModel.emailError)
                 .focused($focusedField, equals: .email)
                 .submitLabel(.next)
                 .onSubmit {
                     focusedField = .password
                 }
             
-            FormField(label: "Password", text: $inputtedPassword, error: $passwordError, secure: true)
+            FormField(label: "Password", text: $viewModel.password, error: $viewModel.passwordError, secure: true)
                 .focused($focusedField, equals: .password)
                 .submitLabel(.done)
         }
@@ -87,8 +84,8 @@ struct LogInView: View {
     
     var logInButton: some View {
         Button {
-            validateForm()
             print("Log in button pressed")
+            viewModel.logIn()
         } label: {
             HStack {
                 Text("Log in")
@@ -96,7 +93,7 @@ struct LogInView: View {
             .frame(maxWidth: .infinity)
         }
         .buttonStyle(MainButtonStyle())
-        .disabled(inputtedEmail.isEmpty ||  inputtedPassword.isEmpty)
+        .disabled(viewModel.email.isEmpty ||  viewModel.password.isEmpty)
     }
 
     var logInInstead: some View {
@@ -113,27 +110,6 @@ struct LogInView: View {
             }
             Spacer()
         }
-    }
-    
-    private func validateForm() {
-        emailError = nil
-        passwordError = nil
-
-        if inputtedEmail.isEmpty {
-            emailError = "Email is empty"
-        } else if !self.isValidEmail(inputtedEmail) {
-            emailError = "Email is invalid"
-        }
-        
-        if inputtedPassword.isEmpty {
-            passwordError = "Password is empty"
-        }
-    }
-    
-    private func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
     }
 }
 

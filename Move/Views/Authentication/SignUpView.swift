@@ -9,12 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    @State var inputtedEmail = ""
-    @State var emailError: String?
-    @State var inputtedPassword = ""
-    @State var passwordError: String?
-    @State var inputtedUsername = ""
-    @State var usernameError: String?
+    @ObservedObject var viewModel = SignUpViewModel()
     
     private enum Field: Int, Hashable {
         case email, username, password
@@ -63,19 +58,19 @@ struct SignUpView: View {
     
     var form: some View {
         VStack (spacing: 20) {
-            FormField(label: "Email", text: $inputtedEmail, error: $emailError)
+            FormField(label: "Email", text: $viewModel.email, error: $viewModel.emailError)
                 .focused($focusedField, equals: .email)
                 .submitLabel(.next)
                 .onSubmit {
                     focusedField = .username
                 }
-            FormField(label: "Username", text: $inputtedUsername, error: $usernameError)
+            FormField(label: "Username", text: $viewModel.username, error: $viewModel.usernameError)
                 .focused($focusedField, equals: .username)
                 .submitLabel(.next)
                 .onSubmit {
                     focusedField = .password
                 }
-            FormField(label: "Password", text: $inputtedPassword, error: $passwordError, guidanceText: "Use a strong password (min. 8 characters and use symbols)", secure: true)
+            FormField(label: "Password", text: $viewModel.password, error: $viewModel.passwordError, guidanceText: "Use a strong password (min. 8 characters and use symbols)", secure: true)
                 .focused($focusedField, equals: .password)
                 .submitLabel(.done)
         }
@@ -111,7 +106,7 @@ struct SignUpView: View {
     var getStartedButton: some View {
         Button {
             print("Get Started button pressed")
-            validateForm()
+            viewModel.validateForm()
         } label: {
             HStack {
                 Text("Get Started")
@@ -119,7 +114,7 @@ struct SignUpView: View {
             .frame(maxWidth: .infinity)
         }
         .buttonStyle(MainButtonStyle())
-        .disabled(inputtedEmail.isEmpty || inputtedUsername.isEmpty || inputtedPassword.isEmpty)
+        .disabled(viewModel.email.isEmpty || viewModel.username.isEmpty || viewModel.password.isEmpty)
     }
     
     var logInInstead: some View {
@@ -138,34 +133,6 @@ struct SignUpView: View {
             }
             Spacer()
         }
-    }
-    
-    private func validateForm() {
-        emailError = nil
-        usernameError = nil
-        passwordError = nil
-
-        if inputtedEmail.isEmpty {
-            emailError = "Email is empty"
-        } else if !self.isValidEmail(inputtedEmail) {
-            emailError = "Email is invalid"
-        }
-        
-        if inputtedUsername.isEmpty {
-            usernameError = "Username is empty"
-        }
-        
-        if inputtedPassword.isEmpty {
-            passwordError = "Password is empty"
-        } else if inputtedPassword.count < 8 {
-            passwordError = "Password must contain at least 8 characters"
-        }
-    }
-    
-    private func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
     }
 }
 

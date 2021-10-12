@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		574DBD152715B191005F5F32 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DBD142715B191005F5F32 /* SignUpViewModel.swift */; };
+		574DBD172715B6C4005F5F32 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DBD162715B6C4005F5F32 /* LogInViewModel.swift */; };
+		575D8F67271578D100F6B224 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 575D8F66271578D100F6B224 /* SwiftMessages */; };
+		575D8F6A2715792F00F6B224 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 575D8F692715792F00F6B224 /* Alamofire */; };
 		5762D878270DCBB100FB4072 /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5762D877270DCBB100FB4072 /* StepIndicatorView.swift */; };
 		5762D87E270DDD0700FB4072 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5762D87D270DDD0700FB4072 /* LaunchScreen.storyboard */; };
 		577BE3F327102A1200DF3633 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577BE3F227102A1200DF3633 /* LogInView.swift */; };
@@ -35,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		574DBD142715B191005F5F32 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		574DBD162715B6C4005F5F32 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		5762D877270DCBB100FB4072 /* StepIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepIndicatorView.swift; sourceTree = "<group>"; };
 		5762D87D270DDD0700FB4072 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		577BE3F227102A1200DF3633 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
@@ -69,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				575D8F67271578D100F6B224 /* SwiftMessages in Frameworks */,
+				575D8F6A2715792F00F6B224 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,8 +87,10 @@
 			isa = PBXGroup;
 			children = (
 				579D4C01270ED8F0009A598A /* SignUpView.swift */,
+				574DBD142715B191005F5F32 /* SignUpViewModel.swift */,
 				579D4C03270EE81A009A598A /* FormField.swift */,
 				577BE3F227102A1200DF3633 /* LogInView.swift */,
+				574DBD162715B6C4005F5F32 /* LogInViewModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -196,6 +206,10 @@
 			dependencies = (
 			);
 			name = Move;
+			packageProductDependencies = (
+				575D8F66271578D100F6B224 /* SwiftMessages */,
+				575D8F692715792F00F6B224 /* Alamofire */,
+			);
 			productName = Move;
 			productReference = 579E3546270C32FB007D65C6 /* Move.app */;
 			productType = "com.apple.product-type.application";
@@ -224,6 +238,10 @@
 				Base,
 			);
 			mainGroup = 579E353D270C32FB007D65C6;
+			packageReferences = (
+				575D8F65271578D100F6B224 /* XCRemoteSwiftPackageReference "SwiftMessages" */,
+				575D8F682715792F00F6B224 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 579E3547270C32FB007D65C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -267,11 +285,13 @@
 				579E355E270C66AB007D65C6 /* Constants.swift in Sources */,
 				57F152C3270DA4A700DB2901 /* OnboardingViewModel.swift in Sources */,
 				578DF2EA27142CF40028911D /* MainButtonStyle.swift in Sources */,
+				574DBD172715B6C4005F5F32 /* LogInViewModel.swift in Sources */,
 				579E354C270C32FB007D65C6 /* OnboardingView.swift in Sources */,
 				5762D878270DCBB100FB4072 /* StepIndicatorView.swift in Sources */,
 				579E354A270C32FB007D65C6 /* MoveApp.swift in Sources */,
 				579D4C02270ED8F0009A598A /* SignUpView.swift in Sources */,
 				579D4C04270EE81A009A598A /* FormField.swift in Sources */,
+				574DBD152715B191005F5F32 /* SignUpViewModel.swift in Sources */,
 				579E355B270C6123007D65C6 /* BackgroundViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +499,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		575D8F65271578D100F6B224 /* XCRemoteSwiftPackageReference "SwiftMessages" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftKickMobile/SwiftMessages";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		575D8F682715792F00F6B224 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		575D8F66271578D100F6B224 /* SwiftMessages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 575D8F65271578D100F6B224 /* XCRemoteSwiftPackageReference "SwiftMessages" */;
+			productName = SwiftMessages;
+		};
+		575D8F692715792F00F6B224 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 575D8F682715792F00F6B224 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 579E353E270C32FB007D65C6 /* Project object */;
 }
