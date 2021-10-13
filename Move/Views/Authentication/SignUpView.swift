@@ -104,17 +104,28 @@ struct SignUpView: View {
     }
     
     var getStartedButton: some View {
-        Button {
-            print("Get Started button pressed")
-            viewModel.register()
-        } label: {
-            HStack {
-                Text("Get Started")
+        ZStack (alignment: .trailing) {
+            Button {
+                print("Get Started button pressed")
+                viewModel.register()
+            } label: {
+                HStack {
+                    Text("Get Started")
+                }
+                .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
+            .buttonStyle(MainButtonStyle())
+            .disabled(
+                viewModel.email.isEmpty ||
+                viewModel.username.isEmpty ||
+                viewModel.password.isEmpty ||
+                viewModel.isLoading
+            )
+            if viewModel.isLoading {
+                ProgressView()
+                    .padding()
+            }
         }
-        .buttonStyle(MainButtonStyle())
-        .disabled(viewModel.email.isEmpty || viewModel.username.isEmpty || viewModel.password.isEmpty)
     }
     
     var logInInstead: some View {

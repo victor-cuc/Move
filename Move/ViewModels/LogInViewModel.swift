@@ -14,9 +14,11 @@ class LogInViewModel: ObservableObject {
     @Published var emailError: String? = nil
     @Published var password: String = ""
     @Published var passwordError: String? = nil
+    @Published var isLoading = false
     
     func logIn() {
         if isValid {
+            isLoading = true
             APIService.logIn(email: email, password: password) { result in
                 switch result {
                 case .success(let authResult):
@@ -24,6 +26,7 @@ class LogInViewModel: ObservableObject {
                 case .failure(let error):
                     ErrorHandler.handle(error: error)
                 }
+                self.isLoading = false
             }
         }
     }

@@ -83,17 +83,24 @@ struct LogInView: View {
     }
     
     var logInButton: some View {
-        Button {
-            print("Log in button pressed")
-            viewModel.logIn()
-        } label: {
-            HStack {
-                Text("Log in")
+        ZStack (alignment: .trailing) {
+            Button {
+                print("Log in button pressed")
+                viewModel.logIn()
+            } label: {
+                HStack {
+                    Text("Log in")
+                }
+                .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
+            .buttonStyle(MainButtonStyle())
+            .disabled(viewModel.email.isEmpty ||  viewModel.password.isEmpty || viewModel.isLoading)
+            
+            if viewModel.isLoading {
+                ProgressView()
+                    .padding()
+            }
         }
-        .buttonStyle(MainButtonStyle())
-        .disabled(viewModel.email.isEmpty ||  viewModel.password.isEmpty)
     }
 
     var logInInstead: some View {

@@ -15,9 +15,11 @@ class SignUpViewModel: ObservableObject {
     @Published var passwordError: String? = nil
     @Published var username: String = ""
     @Published var usernameError: String? = nil
+    @Published var isLoading = false
     
     func register() {
         if isValid {
+            isLoading = true
             APIService.register(email: email, username: username, password: password) { result in
                 switch result {
                 case .success(let authResult):
@@ -25,6 +27,7 @@ class SignUpViewModel: ObservableObject {
                 case .failure(let error):
                     ErrorHandler.handle(error: error)
                 }
+                self.isLoading = false
             }
         }
     }
