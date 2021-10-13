@@ -106,7 +106,7 @@ struct SignUpView: View {
     var getStartedButton: some View {
         Button {
             print("Get Started button pressed")
-            viewModel.validateForm()
+            viewModel.register()
         } label: {
             HStack {
                 Text("Get Started")

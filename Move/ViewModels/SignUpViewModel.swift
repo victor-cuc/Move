@@ -16,26 +16,43 @@ class SignUpViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var usernameError: String? = nil
     
-    func validateForm() {
-        emailError = nil
-        usernameError = nil
-        passwordError = nil
+    func register() {
+        if isValid {
+            APIService.register(email: email, username: username, password: password) { result in
+                switch result {
+                case .success(let authResult):
+                    print(authResult.user.username)
+                case .failure(let error):
+                    ErrorHandler.handle(error: error)
+                }
+            }
+        }
+    }
+    
+    var isValid: Bool {
 
         if email.isEmpty {
             emailError = "Email is empty"
+            return false
         } else if !isValidEmail(email) {
             emailError = "Email is invalid"
+            return false
         }
         
         if username.isEmpty {
             usernameError = "Username is empty"
+            return false
         }
         
         if password.isEmpty {
             passwordError = "Password is empty"
-        } else if password.count < 8 {
-            passwordError = "Password must contain at least 8 characters"
+            return false
         }
+        
+        emailError = nil
+        usernameError = nil
+        passwordError = nil
+        return true
     }
     
     private func isValidEmail(_ email: String) -> Bool {

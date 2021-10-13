@@ -17,7 +17,14 @@ class LogInViewModel: ObservableObject {
     
     func logIn() {
         if isValid {
-            makeRequest()
+            APIService.logIn(email: email, password: password) { result in
+                switch result {
+                case .success(let authResult):
+                    print(authResult.user.username)
+                case .failure(let error):
+                    ErrorHandler.handle(error: error)
+                }
+            }
         }
     }
     
@@ -47,13 +54,15 @@ class LogInViewModel: ObservableObject {
         return emailPred.evaluate(with: email)
     }
     
-    private func makeRequest() {
-        AF.request("https://tapp-scooter-api.herokuapp.com/api/login",
-                   method: .post,
-                   parameters: ["email": email, "password": password],
-                   encoder: JSONParameterEncoder.default).response { response in
-            debugPrint(response)
-        }
-        
-    }
+//    private func makeRequest() {
+//        AF.request("https://tapp-scooter-api.herokuapp.com/api/login",
+//                   method: .post,
+//                   parameters: ["email": email, "password": password],
+//                   encoder: JSONParameterEncoder.default).response { response in
+////            debugPrint(response)
+//            self.handleResponse(response)
+//        }
+//
+//    }
+
 }

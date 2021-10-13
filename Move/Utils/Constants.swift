@@ -19,6 +19,10 @@ enum Constants {
         public static let errorColor = Color("ErrorColor")
     }
     
+    enum UserDefaults {
+        public static let currentUser = "currentUser"
+    }
+    
     public static let disabledTextOpacity = 0.5
 }
 
