@@ -41,22 +41,19 @@ struct OnboardingView: View {
         VStack {
             HStack {
                 Text(viewModel.currentStep.title)
-                    .font(Font.Custom.bold.with(size: 32))
-                    .bold()
+                    .titleStyle()
                 Spacer()
                 Button {
                     viewModel.getStarted()
                 } label: {
                     Text("Skip")
-                        .font(Font.Custom.semibold.with(size: 14))
-                        .foregroundColor(Constants.Colors.primaryTextColor).opacity(Constants.disabledTextOpacity)
+                        .opaqueStyle()
                 }
             }
             .padding(.bottom, 12)
             
             Text(viewModel.currentStep.text)
-                .font(Font.Custom.medium.with(size: 16))
-                .multilineTextAlignment(.leading)
+                .descriptionStyle()
                 .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
             HStack {

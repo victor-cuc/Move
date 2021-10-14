@@ -109,10 +109,8 @@ struct SignUpView: View {
                 print("Get Started button pressed")
                 viewModel.register()
             } label: {
-                HStack {
-                    Text("Get Started")
-                }
-                .frame(maxWidth: .infinity)
+                Text("Get Started")
+                    .frame(maxWidth: .infinity)
             }
             .buttonStyle(MainButtonStyle())
             .disabled(

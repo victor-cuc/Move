@@ -88,10 +88,8 @@ struct LogInView: View {
                 print("Log in button pressed")
                 viewModel.logIn()
             } label: {
-                HStack {
-                    Text("Log in")
-                }
-                .frame(maxWidth: .infinity)
+                Text("Log in")
+                    .frame(maxWidth: .infinity)
             }
             .buttonStyle(MainButtonStyle())
             .disabled(viewModel.email.isEmpty ||  viewModel.password.isEmpty || viewModel.isLoading)
