@@ -18,10 +18,12 @@ struct FormField: View {
     
     var body: some View {
         VStack (alignment: .leading) {
-
+            
             Text(label)
                 .font(.Custom.regular.with(size: 12))
-            
+                .opacity(isEditing ? 1 : 0)
+                .animation(.default, value: isEditing)
+                
             if secure {
                 SecureField(label, text: $text, onCommit: { isEditing = false })
                     .onTapGesture {

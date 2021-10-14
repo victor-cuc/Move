@@ -27,6 +27,7 @@
 		57B09BCC2716F75E0041E5FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B09BCB2716F75E0041E5FF /* User.swift */; };
 		57B09BCE2716F8630041E5FF /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B09BCD2716F8630041E5FF /* AuthResult.swift */; };
 		57B09BD12716FF400041E5FF /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B09BD02716FF400041E5FF /* ErrorHandler.swift */; };
+		57D15A3B271825180001DB19 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D15A3A271825180001DB19 /* Session.swift */; };
 		57F152C3270DA4A700DB2901 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F152C2270DA4A700DB2901 /* OnboardingViewModel.swift */; };
 		57F152D2270DB25900DB2901 /* BaiJamjuree-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152C6270DB25800DB2901 /* BaiJamjuree-ExtraLight.ttf */; };
 		57F152D3270DB25900DB2901 /* BaiJamjuree-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57F152C7270DB25800DB2901 /* BaiJamjuree-LightItalic.ttf */; };
@@ -62,6 +63,7 @@
 		57B09BCB2716F75E0041E5FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		57B09BCD2716F8630041E5FF /* AuthResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
 		57B09BD02716FF400041E5FF /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		57D15A3A271825180001DB19 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		57F152C2270DA4A700DB2901 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		57F152C6270DB25800DB2901 /* BaiJamjuree-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-ExtraLight.ttf"; sourceTree = "<group>"; };
 		57F152C7270DB25800DB2901 /* BaiJamjuree-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BaiJamjuree-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				576DFB1F2716CDE4000EF547 /* APIService.swift */,
+				57D15A3A271825180001DB19 /* Session.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				577BE3F327102A1200DF3633 /* LogInView.swift in Sources */,
+				57D15A3B271825180001DB19 /* Session.swift in Sources */,
 				579E355E270C66AB007D65C6 /* Constants.swift in Sources */,
 				57F152C3270DA4A700DB2901 /* OnboardingViewModel.swift in Sources */,
 				578DF2EA27142CF40028911D /* MainButtonStyle.swift in Sources */,

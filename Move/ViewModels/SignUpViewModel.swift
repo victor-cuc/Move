@@ -24,6 +24,7 @@ class SignUpViewModel: ObservableObject {
                 switch result {
                 case .success(let authResult):
                     print(authResult.user.username)
+                    Session.shared.accessToken = authResult.authToken
                 case .failure(let error):
                     ErrorHandler.handle(error: error)
                 }
