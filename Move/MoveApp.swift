@@ -7,11 +7,30 @@
 
 import SwiftUI
 
+//class MainViewModel: ObservableObject {
+//    
+//    
+//}
+
 @main
 struct MoveApp: App {
+    @State var showAuthFlow: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            OnboardingView()
+            NavigationView {
+                ZStack {
+                    OnboardingView(onFinished: {
+                        showAuthFlow = true
+                    })
+                    NavigationLink(isActive: $showAuthFlow, destination: {
+                        OnboardingCoordinatorView {
+                            print("continue flow")
+                        }
+                        .navigationBarHidden(true)
+                    })
+                }
+            }
         }
     }
 }

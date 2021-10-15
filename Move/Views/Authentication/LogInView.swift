@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct LogInView: View {
-    
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    @ObservedObject var viewModel = LogInViewModel()
+
+    @StateObject var viewModel = LogInViewModel()
     
     private enum Field: Int, Hashable {
         case email, password
     }
     
     @FocusState private var focusedField: Field?
+    
+    var onLogIn: () -> Void
+    var onSignUpInstead: () -> Void
     
     var body: some View {
         ZStack {
@@ -28,7 +29,7 @@ struct LogInView: View {
                 form
                 forgotPassword
                 logInButton
-                logInInstead
+                signUpInstead
                 Spacer()
             }
             .foregroundColor(.white)
@@ -86,7 +87,7 @@ struct LogInView: View {
         ZStack (alignment: .trailing) {
             Button {
                 print("Log in button pressed")
-                viewModel.logIn()
+                viewModel.logIn(onLogIn)
             } label: {
                 Text("Log in")
                     .frame(maxWidth: .infinity)
@@ -101,13 +102,13 @@ struct LogInView: View {
         }
     }
 
-    var logInInstead: some View {
+    var signUpInstead: some View {
         HStack (spacing: 0) {
             Spacer()
             Text("Don’t have an account? You can ")
                 .font(.Custom.regular.with(size: 12))
             Button {
-                self.presentationMode.wrappedValue.dismiss()
+                onSignUpInstead()
             } label: {
                 Text("start with one here")
                     .font(.Custom.semibold.with(size: 12))
@@ -120,7 +121,7 @@ struct LogInView: View {
 
 struct LogInView_Previews: PreviewProvider {
     static var previews: some View {
-        LogInView()
-        LogInView().preferredColorScheme(.dark)
+        LogInView(onLogIn: {}, onSignUpInstead: {})
+        LogInView(onLogIn: {}, onSignUpInstead: {}).preferredColorScheme(.dark)
     }
 }

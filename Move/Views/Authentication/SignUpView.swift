@@ -15,6 +15,9 @@ struct SignUpView: View {
         case email, username, password
     }
     
+    var onSignUp: () -> Void
+    var onLogInInstead: () -> Void
+    
     @FocusState private var focusedField: Field?
     
     var body: some View {
@@ -107,7 +110,7 @@ struct SignUpView: View {
         ZStack (alignment: .trailing) {
             Button {
                 print("Get Started button pressed")
-                viewModel.register()
+                viewModel.register(onSignUp)
             } label: {
                 Text("Get Started")
                     .frame(maxWidth: .infinity)
@@ -131,10 +134,8 @@ struct SignUpView: View {
             Spacer()
             Text("You already have an account? You can ")
                 .font(.Custom.regular.with(size: 12))
-            NavigationLink {
-                LogInView()
-                    .navigationBarHidden(true)
-                    .navigationBarBackButtonHidden(true)
+            Button {
+                onLogInInstead()
             } label: {
                 Text("log in here")
                     .font(.Custom.semibold.with(size: 12))
@@ -147,7 +148,7 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
-        SignUpView().preferredColorScheme(.dark)
+        SignUpView(onSignUp: {}, onLogInInstead: {})
+        SignUpView(onSignUp: {}, onLogInInstead: {}).preferredColorScheme(.dark)
     }
 }

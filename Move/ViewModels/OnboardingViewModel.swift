@@ -25,7 +25,6 @@ class OnboardingViewModel: ObservableObject {
         OnboardingStep(title: "Rules", text: "You must be 18 years or and older with a valid driving licence to operate a scooter. Please follow all street signs, signals and markings, and obey local traffic laws.", buttonLabelText: "Get Started", imageName: "onboarding-rules")
     ]
     
-    @Published var moveToNextScreen = false
     @Published var currentStepIndex: Int
     
     var currentStep: OnboardingStep {
@@ -36,15 +35,11 @@ class OnboardingViewModel: ObservableObject {
         currentStepIndex = 0
     }
     
-    func nextStep() {
+    func nextStep(onFinished: () -> Void) {
         if currentStepIndex < steps.count - 1 {
             currentStepIndex = currentStepIndex + 1
         } else {
-            getStarted()
+            onFinished()
         }
-    }
-    
-    func getStarted() {
-        moveToNextScreen = true
     }
 }

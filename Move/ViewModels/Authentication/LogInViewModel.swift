@@ -16,7 +16,7 @@ class LogInViewModel: ObservableObject {
     @Published var passwordError: String? = nil
     @Published var isLoading = false
     
-    func logIn() {
+    func logIn(_ onSuccess: @escaping () -> Void) {
         if isValid {
             isLoading = true
             APIService.logIn(email: email, password: password) { result in
@@ -24,6 +24,7 @@ class LogInViewModel: ObservableObject {
                 case .success(let authResult):
                     print(authResult.user.username)
                     Session.shared.accessToken = authResult.authToken
+                    onSuccess()
                 case .failure(let error):
                     ErrorHandler.handle(error: error)
                 }

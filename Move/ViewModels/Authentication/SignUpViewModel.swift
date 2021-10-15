@@ -17,7 +17,7 @@ class SignUpViewModel: ObservableObject {
     @Published var usernameError: String? = nil
     @Published var isLoading = false
     
-    func register() {
+    func register(_ onSuccess: @escaping () -> Void) {
         if isValid {
             isLoading = true
             APIService.register(email: email, username: username, password: password) { result in
@@ -25,6 +25,7 @@ class SignUpViewModel: ObservableObject {
                 case .success(let authResult):
                     print(authResult.user.username)
                     Session.shared.accessToken = authResult.authToken
+                    onSuccess()
                 case .failure(let error):
                     ErrorHandler.handle(error: error)
                 }

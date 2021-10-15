@@ -8,33 +8,19 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @ObservedObject var viewModel = OnboardingViewModel()
+    @StateObject var viewModel = OnboardingViewModel()
+    
+    var onFinished: () -> Void
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                NavigationLink(
-                    isActive: $viewModel.moveToNextScreen,
-                    destination: {
-                        SignUpView()
-                            .navigationBarHidden(true)
-                            .navigationBarBackButtonHidden(true)
-                    },
-                    label: {
-                        EmptyView()
-                    }
-                )
-                .hidden()
-                DefaultBackgroundView()
-                VStack (spacing: 16) {
-                    imageContainer
-                    detailContainer
-                        .frame(minHeight: 320)
-                }
-                .foregroundColor(Constants.Colors.primaryTextColor)
-            }
-            .navigationBarHidden(true)
+        VStack (spacing: 16) {
+            imageContainer
+            detailContainer
+                .frame(minHeight: 320)
         }
+        .foregroundColor(Constants.Colors.primaryTextColor)
+        .background(DefaultBackgroundView())
+        .navigationBarHidden(true)
     }
     
     var detailContainer: some View {
@@ -44,7 +30,7 @@ struct OnboardingView: View {
                     .titleStyle()
                 Spacer()
                 Button {
-                    viewModel.getStarted()
+                    onFinished()
                 } label: {
                     Text("Skip")
                         .opaqueStyle()
@@ -60,7 +46,7 @@ struct OnboardingView: View {
                 StepIndicatorView(numberOfSteps: viewModel.steps.count, currentStepIndex: viewModel.currentStepIndex)
                 Spacer()
                 Button(action: {
-                    viewModel.nextStep()
+                    viewModel.nextStep(onFinished: onFinished)
                 }) {
                     HStack {
                         Text(viewModel.currentStep.buttonLabelText)
@@ -88,7 +74,7 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView()
-        OnboardingView().preferredColorScheme(.dark)
+        OnboardingView(onFinished: {})
+        OnboardingView(onFinished: {}).preferredColorScheme(.dark)
     }
 }

@@ -7,7 +7,10 @@
 
 import SwiftUI
 
-struct BeforeStartView: View {
+struct LicencePromptView: View {
+    
+    var onNext: () -> Void
+    
     var body: some View {
         ZStack {
             DefaultBackgroundView()
@@ -29,7 +32,6 @@ struct BeforeStartView: View {
                 .resizable()
                 .scaledToFill()
         )
-            .clipped()
     }
     
     var textContainer: some View {
@@ -47,7 +49,7 @@ struct BeforeStartView: View {
     
     var button: some View {
         Button {
-            
+            onNext()
         } label: {
             Text("Add driving licence")
                 .frame(maxWidth: .infinity)
@@ -58,7 +60,7 @@ struct BeforeStartView: View {
 
 struct BeforeStartView_Previews: PreviewProvider {
     static var previews: some View {
-        BeforeStartView()
-        BeforeStartView().preferredColorScheme(.dark)
+        LicencePromptView(onNext: {})
+        LicencePromptView(onNext: {}).preferredColorScheme(.dark)
     }
 }
