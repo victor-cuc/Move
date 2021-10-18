@@ -16,7 +16,7 @@ extension NavigationLink where Label == EmptyView {
     }
 }
 
-extension OnboardingCoordinatorView {
+extension AuthCoordinatorView {
     
     class ViewModel: ObservableObject {
         @Published var showLogin: Bool = false
@@ -26,7 +26,7 @@ extension OnboardingCoordinatorView {
     }
 }
 
-struct OnboardingCoordinatorView: View {
+struct AuthCoordinatorView: View {
     
     @StateObject var viewModel: ViewModel = ViewModel()
     
@@ -63,7 +63,7 @@ struct OnboardingCoordinatorView: View {
             .sheet(isPresented: $viewModel.showCamera) {
                 
             } content: {
-                ImagePicker(image: $viewModel.licencePhoto)
+                ScannerView(image: $viewModel.licencePhoto)
             }
         }
     }
@@ -82,6 +82,6 @@ struct OnboardingCoordinatorView: View {
 
 struct OnboardingCoordinatorView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingCoordinatorView {}
+        AuthCoordinatorView {}
     }
 }

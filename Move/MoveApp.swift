@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-//class MainViewModel: ObservableObject {
-//    
-//    
-//}
-
 @main
 struct MoveApp: App {
     @State var showAuthFlow: Bool = false
@@ -24,7 +19,7 @@ struct MoveApp: App {
                         showAuthFlow = true
                     })
                     NavigationLink(isActive: $showAuthFlow, destination: {
-                        OnboardingCoordinatorView {
+                        AuthCoordinatorView {
                             print("continue flow")
                         }
                         .navigationBarHidden(true)
