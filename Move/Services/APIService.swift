@@ -7,12 +7,20 @@
 
 import Foundation
 import Alamofire
+import SwiftUI
+import UIKit
 
 typealias Result<Success> = Swift.Result<Success, Error>
 
 struct APIService {
     
     static let urlRoot = "https://tapp-scooter-api.herokuapp.com"
+    
+    static var headers: HTTPHeaders {
+        return [
+            "Authorization": "Bearer \(Session.shared.accessToken ?? "")"
+        ]
+    }
     
     static func logIn(email: String, password: String, _ callback: @escaping (Result<AuthResult>) -> Void) {
         AF.request("\(urlRoot)/api/login",
@@ -36,6 +44,31 @@ struct APIService {
             }
     }
     
+    static func uploadDriversLicence(image: UIImage, _ callback: @escaping (Result<Void>) -> Void) {
+        let scaledImage = image.scalePreservingAspectRatio(maxEdgeSize: 1200)
+        debugPrint("Scaled image size = width: \(scaledImage.size.width), height: \(scaledImage.size.height)")
+        if let imageData = scaledImage.jpegData(compressionQuality: 0.85) {
+            debugPrint("Headers: \(headers)")
+            AF.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: "image", fileName: "image.jpeg", mimeType: "image/jpeg")
+                    }, to: "\(urlRoot)/api/uploads", method: .post, headers: headers).response { response in
+                        callback(decodeVoidResult(from: response))
+                    }
+        }
+    }
+    
+    static func decodeVoidResult(from response: AFDataResponse<Data?>) -> Result<Void> {
+        if let error = response.error {
+            if let data = response.data, let apiError = try? JSONDecoder().decode(APIError.self, from: data) {
+                return .failure(apiError)
+            } else {
+                return .failure(error)
+            }
+        } else {
+            return .success(())
+        }
+    }
+    
     static func decodeResult<T: Decodable>(from response: AFDataResponse<Data>) -> Result<T> {
         if let error = response.error {
             if let data = response.data, let apiError = try? JSONDecoder().decode(APIError.self, from: data) {
@@ -55,7 +88,7 @@ struct APIService {
 
 struct APIError: LocalizedError, Decodable {
     let message: String
-    let code: Int
+    var code: Int? 
     
     var localizedDescription: String {
         return message

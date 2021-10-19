@@ -61,7 +61,18 @@ struct AuthCoordinatorView: View {
                 viewModel.showCamera = true
             }
             .sheet(isPresented: $viewModel.showCamera) {
-                
+                guard let image = viewModel.licencePhoto else {
+                    return
+                }
+                APIService.uploadDriversLicence(image: image) { result in
+                    switch result {
+                    case .failure(let error):
+                        ErrorHandler.handle(error: error)
+                    case .success:
+                        debugPrint("Image uploaded successfully")
+                    }
+                    
+                }
             } content: {
                 ScannerView(image: $viewModel.licencePhoto)
             }
