@@ -16,15 +16,13 @@ class LogInViewModel: ObservableObject {
     @Published var passwordError: String? = nil
     @Published var isLoading = false
     
-    func logIn(_ onSuccess: @escaping () -> Void) {
+    func logIn(_ onSuccess: @escaping (AuthResult) -> Void) {
         if isValid {
             isLoading = true
             APIService.logIn(email: email, password: password) { result in
                 switch result {
                 case .success(let authResult):
-                    print(authResult.user.username)
-                    Session.shared.accessToken = authResult.authToken
-                    onSuccess()
+                    onSuccess(authResult)
                 case .failure(let error):
                     ErrorHandler.handle(error: error)
                 }

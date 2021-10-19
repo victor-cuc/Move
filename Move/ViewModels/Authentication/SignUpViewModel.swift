@@ -17,15 +17,13 @@ class SignUpViewModel: ObservableObject {
     @Published var usernameError: String? = nil
     @Published var isLoading = false
     
-    func register(_ onSuccess: @escaping () -> Void) {
+    func register(_ onSuccess: @escaping (AuthResult) -> Void) {
         if isValid {
             isLoading = true
             APIService.register(email: email, username: username, password: password) { result in
                 switch result {
-                case .success(let authResult):
-                    print(authResult.user.username)
-                    Session.shared.accessToken = authResult.authToken
-                    onSuccess()
+                case .success(let authResult): 
+                    onSuccess(authResult)
                 case .failure(let error):
                     ErrorHandler.handle(error: error)
                 }
@@ -51,6 +49,9 @@ class SignUpViewModel: ObservableObject {
         
         if password.isEmpty {
             passwordError = "Password is empty"
+            return false
+        } else if password.count < 8 {
+            passwordError = "Password must be 8 characters or longer"
             return false
         }
         

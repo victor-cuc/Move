@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Alamofire
 
 extension NavigationLink where Label == EmptyView {
 
@@ -24,7 +25,17 @@ extension AuthCoordinatorView {
         @Published var showVerifyingLicenceLoader: Bool = false
         @Published var showLicenceValidatedScreen: Bool = false
         @Published var showCamera: Bool = false
+        
         @Published var licencePhoto: UIImage?
+        var authResult: AuthResult?
+        
+        func saveSession() {
+            guard let authResult = self.authResult else {
+                assert(false, "Unexpected state: Auth result not set")
+                return
+            }
+            Session.shared.accessToken = authResult.authToken
+        }
     }
 }
 
@@ -34,6 +45,14 @@ struct AuthCoordinatorView: View {
     
     let onFinished: () -> Void
     
+//    var body: some View {
+//        NavigationView {
+//            licenceScreen
+//        }.onAppear {
+//            Session.shared.accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTUxOTQ2OGI1Y2RiYjAwMTYyNmVjYmIiLCJpYXQiOjE2MzQ2NDE0MTV9.mihO0xqlTHNq5HVh7l418eZMGt5pfD4rJU0wMMD60Dw"
+//        }
+//    }
+    
     var body: some View {
         NavigationView {
             signUpScreen
@@ -42,7 +61,8 @@ struct AuthCoordinatorView: View {
     
     var signUpScreen: some View {
         ZStack {
-            SignUpView {
+            SignUpView { authResult in
+                viewModel.authResult = authResult
                 viewModel.showLicenceScreen = true
             } onLogInInstead: {
                 viewModel.showLogin = true
@@ -67,7 +87,10 @@ struct AuthCoordinatorView: View {
                 guard let image = viewModel.licencePhoto else {
                     return
                 }
-                viewModel.showVerifyingLicenceLoader = true
+                viewModel.showCamera = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    viewModel.showVerifyingLicenceLoader = true
+                }
                 APIService.uploadDriversLicence(image: image) { result in
                     switch result {
                     case .failure(let error):
@@ -75,9 +98,10 @@ struct AuthCoordinatorView: View {
                         viewModel.showVerifyingLicenceLoader = false
                     case .success:
                         debugPrint("Image uploaded successfully")
-                        viewModel.showLicenceValidatedScreen = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            viewModel.showLicenceValidatedScreen = true
+                        }
                     }
-                    
                 }
             } content: {
                 ScannerView(image: $viewModel.licencePhoto)
@@ -86,17 +110,28 @@ struct AuthCoordinatorView: View {
                 VerifyingLoaderView()
                     .navigationBarHidden(true)
             }
-            NavigationLink(isActive: $viewModel.showLicenceValidatedScreen) {
-                LicenceValidatedView(onFinished: onFinished)
+            ZStack {
+                NavigationLink(isActive: $viewModel.showLicenceValidatedScreen) {
+                    LicenceValidatedView {
+                        viewModel.saveSession()
+                        onFinished()
+                    }
                     .navigationBarHidden(true)
+                }
             }
         }
     }
     
     var logInScreen: some View {
         ZStack {
-            LogInView {
-                onFinished()
+            LogInView { authResult in
+                viewModel.authResult = authResult
+                if authResult.user.driverLicenseKey != nil {
+                    onFinished()
+                } else {
+                    viewModel.showLicenceScreen = true
+                }
+                
             } onSignUpInstead: {
                 viewModel.showLogin = false
             }

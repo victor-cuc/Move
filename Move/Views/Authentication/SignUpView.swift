@@ -15,7 +15,7 @@ struct SignUpView: View {
         case email, username, password
     }
     
-    var onSignUp: () -> Void
+    var onSignUp: (AuthResult) -> Void
     var onLogInInstead: () -> Void
     
     @FocusState private var focusedField: Field?
@@ -148,7 +148,7 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(onSignUp: {}, onLogInInstead: {})
-        SignUpView(onSignUp: {}, onLogInInstead: {}).preferredColorScheme(.dark)
+        SignUpView(onSignUp: {_ in }, onLogInInstead: {})
+        SignUpView(onSignUp: {_ in }, onLogInInstead: {}).preferredColorScheme(.dark)
     }
 }

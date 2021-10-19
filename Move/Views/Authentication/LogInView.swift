@@ -17,7 +17,7 @@ struct LogInView: View {
     
     @FocusState private var focusedField: Field?
     
-    var onLogIn: () -> Void
+    var onLogIn: (AuthResult) -> Void
     var onSignUpInstead: () -> Void
     
     var body: some View {
@@ -121,7 +121,7 @@ struct LogInView: View {
 
 struct LogInView_Previews: PreviewProvider {
     static var previews: some View {
-        LogInView(onLogIn: {}, onSignUpInstead: {})
-        LogInView(onLogIn: {}, onSignUpInstead: {}).preferredColorScheme(.dark)
+        LogInView(onLogIn: {_ in }, onSignUpInstead: {})
+        LogInView(onLogIn: {_ in }, onSignUpInstead: {}).preferredColorScheme(.dark)
     }
 }

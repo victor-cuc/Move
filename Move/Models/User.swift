@@ -11,9 +11,11 @@ class User: Codable {
     
     let id: String
     let username: String
+    var driverLicenseKey: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case username
+        case driverLicenseKey
     }
 }
