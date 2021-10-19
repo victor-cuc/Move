@@ -19,9 +19,9 @@ struct MoveApp: App {
                         showAuthFlow = true
                     })
                     NavigationLink(isActive: $showAuthFlow, destination: {
-                        AuthCoordinatorView {
+                        AuthCoordinatorView(onFinished: {
                             print("continue flow")
-                        }
+                        })
                         .navigationBarHidden(true)
                     })
                 }

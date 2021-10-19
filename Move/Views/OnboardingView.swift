@@ -10,7 +10,7 @@ import SwiftUI
 struct OnboardingView: View {
     @StateObject var viewModel = OnboardingViewModel()
     
-    var onFinished: () -> Void
+    let onFinished: () -> Void
     
     var body: some View {
         VStack (spacing: 16) {

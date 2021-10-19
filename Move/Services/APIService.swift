@@ -47,13 +47,24 @@ struct APIService {
     static func uploadDriversLicence(image: UIImage, _ callback: @escaping (Result<Void>) -> Void) {
         let scaledImage = image.scalePreservingAspectRatio(maxEdgeSize: 1200)
         debugPrint("Scaled image size = width: \(scaledImage.size.width), height: \(scaledImage.size.height)")
+        
         if let imageData = scaledImage.jpegData(compressionQuality: 0.85) {
-            debugPrint("Headers: \(headers)")
-            AF.upload(multipartFormData: { multipartFormData in
-                multipartFormData.append(imageData, withName: "image", fileName: "image.jpeg", mimeType: "image/jpeg")
-                    }, to: "\(urlRoot)/api/uploads", method: .post, headers: headers).response { response in
-                        callback(decodeVoidResult(from: response))
-                    }
+            
+            AF.upload(
+                multipartFormData: { multipartFormData in
+                    multipartFormData.append(imageData, withName: "image", fileName: "image.jpeg", mimeType: "image/jpeg")
+                },
+                to: "\(urlRoot)/api/uploads", method: .post, headers: headers
+            )
+            .response { response in
+                callback(decodeVoidResult(from: response))
+            }
+            .uploadProgress { progress in
+                print("Upload progress: \(progress.fractionCompleted)")
+                if progress.isFinished {
+                    print("Upload finished")
+                }
+            }
         }
     }
     

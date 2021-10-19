@@ -21,6 +21,8 @@ extension AuthCoordinatorView {
     class ViewModel: ObservableObject {
         @Published var showLogin: Bool = false
         @Published var showLicenceScreen: Bool = false
+        @Published var showVerifyingLicenceLoader: Bool = false
+        @Published var showLicenceValidatedScreen: Bool = false
         @Published var showCamera: Bool = false
         @Published var licencePhoto: UIImage?
     }
@@ -60,21 +62,33 @@ struct AuthCoordinatorView: View {
             LicencePromptView {
                 viewModel.showCamera = true
             }
+            .navigationBarHidden(true)
             .sheet(isPresented: $viewModel.showCamera) {
                 guard let image = viewModel.licencePhoto else {
                     return
                 }
+                viewModel.showVerifyingLicenceLoader = true
                 APIService.uploadDriversLicence(image: image) { result in
                     switch result {
                     case .failure(let error):
                         ErrorHandler.handle(error: error)
+                        viewModel.showVerifyingLicenceLoader = false
                     case .success:
                         debugPrint("Image uploaded successfully")
+                        viewModel.showLicenceValidatedScreen = true
                     }
                     
                 }
             } content: {
                 ScannerView(image: $viewModel.licencePhoto)
+            }
+            NavigationLink(isActive: $viewModel.showVerifyingLicenceLoader) {
+                VerifyingLoaderView()
+                    .navigationBarHidden(true)
+            }
+            NavigationLink(isActive: $viewModel.showLicenceValidatedScreen) {
+                LicenceValidatedView(onFinished: onFinished)
+                    .navigationBarHidden(true)
             }
         }
     }
