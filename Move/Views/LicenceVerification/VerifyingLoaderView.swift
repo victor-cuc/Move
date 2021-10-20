@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct VerifyingLoaderView: View {
+    
+    static let id = String(describing: Self.self)
+    
     var body: some View {
         ZStack {
             PurpleBackgroundView()

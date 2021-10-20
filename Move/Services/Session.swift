@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class Session {
     
@@ -27,7 +28,10 @@ class Session {
                 UserDefaults.standard.set(value, forKey: userDefaultsKey)
             } else {
                 UserDefaults.standard.removeObject(forKey: userDefaultsKey)
+                onLogout.send()
             }
         }
     }
+    
+    var onLogout = PassthroughSubject<Void, Never>()
 }

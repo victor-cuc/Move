@@ -31,7 +31,7 @@ struct MainButtonStyle: ButtonStyle {
                             lineWidth: 2.5
                         )
                 )
-                .foregroundColor(.white)
+                .foregroundColor(configuration.isPressed ? .white.opacity(0.4) : .white)
         }
     }
 }

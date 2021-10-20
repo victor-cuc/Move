@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LicencePromptView: View {
     
+    static let id = String(describing: Self.self)
+    
     var onNext: () -> Void
     
     var body: some View {

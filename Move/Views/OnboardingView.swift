@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    
+    static let id = String(describing: Self.self)
+    
     @StateObject var viewModel = OnboardingViewModel()
     
     let onFinished: () -> Void

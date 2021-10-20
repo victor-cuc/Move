@@ -18,4 +18,10 @@ class User: Codable {
         case username
         case driverLicenseKey
     }
+    
+    init() {
+        id = ""
+        username = ""
+        driverLicenseKey = ""
+    }
 }

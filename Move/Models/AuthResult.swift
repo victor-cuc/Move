@@ -24,4 +24,9 @@ class AuthResult: Decodable {
 //        let nestedContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .user)
 //        let email = try nestedContainer.decode(String.self, forKey: .email)
     }
+    
+    init() {
+        authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTUxOTQ2OGI1Y2RiYjAwMTYyNmVjYmIiLCJpYXQiOjE2MzQ2NDE0MTV9.mihO0xqlTHNq5HVh7l418eZMGt5pfD4rJU0wMMD60Dw"
+        user = User()
+    }
 }

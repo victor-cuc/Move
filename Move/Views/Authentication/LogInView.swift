@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct LogInView: View {
-
+    
+    static let id = String(describing: Self.self)
+    
     @StateObject var viewModel = LogInViewModel()
     
     private enum Field: Int, Hashable {

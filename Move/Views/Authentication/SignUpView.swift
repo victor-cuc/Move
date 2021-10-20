@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    static let id = String(describing: Self.self)
+    
     @ObservedObject var viewModel = SignUpViewModel()
     
     private enum Field: Int, Hashable {
@@ -109,7 +111,6 @@ struct SignUpView: View {
     var getStartedButton: some View {
         ZStack (alignment: .trailing) {
             Button {
-                print("Get Started button pressed")
                 viewModel.register(onSignUp)
             } label: {
                 Text("Get Started")

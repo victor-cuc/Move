@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LicenceValidatedView: View {
+    
+    static let id = String(describing: Self.self)
+    
     let onFinished: () -> Void
     
     var body: some View {

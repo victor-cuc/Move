@@ -13,13 +13,15 @@
 		575D8F6A2715792F00F6B224 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 575D8F692715792F00F6B224 /* Alamofire */; };
 		5762D878270DCBB100FB4072 /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5762D877270DCBB100FB4072 /* StepIndicatorView.swift */; };
 		5762D87E270DDD0700FB4072 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5762D87D270DDD0700FB4072 /* LaunchScreen.storyboard */; };
+		576C6F67271FFAB200535D5B /* NavigationStack in Frameworks */ = {isa = PBXBuildFile; productRef = 576C6F66271FFAB200535D5B /* NavigationStack */; };
 		576DFB202716CDE4000EF547 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576DFB1F2716CDE4000EF547 /* APIService.swift */; };
 		577BE3F327102A1200DF3633 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577BE3F227102A1200DF3633 /* LogInView.swift */; };
 		5784D3A4271D629300FB22C4 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D3A3271D629300FB22C4 /* ScannerView.swift */; };
-		5788726527185B30002640D7 /* AuthCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5788726427185B30002640D7 /* AuthCoordinatorView.swift */; };
+		5788726527185B30002640D7 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5788726427185B30002640D7 /* AuthCoordinator.swift */; };
 		578A5BF4271DA723007DAB52 /* ImageResizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A5BF3271DA723007DAB52 /* ImageResizing.swift */; };
 		578A5BF6271EBCDB007DAB52 /* VerifyingLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A5BF5271EBCDB007DAB52 /* VerifyingLoaderView.swift */; };
 		578A5BF8271EC3EE007DAB52 /* LicenceValidatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A5BF7271EC3EE007DAB52 /* LicenceValidatedView.swift */; };
+		578A5BFA271EF557007DAB52 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A5BF9271EF557007DAB52 /* MenuView.swift */; };
 		578DF2EA27142CF40028911D /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578DF2E927142CF40028911D /* MainButtonStyle.swift */; };
 		579D4C02270ED8F0009A598A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D4C01270ED8F0009A598A /* SignUpView.swift */; };
 		579D4C04270EE81A009A598A /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D4C03270EE81A009A598A /* FormField.swift */; };
@@ -60,10 +62,11 @@
 		576DFB1F2716CDE4000EF547 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		577BE3F227102A1200DF3633 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		5784D3A3271D629300FB22C4 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
-		5788726427185B30002640D7 /* AuthCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorView.swift; sourceTree = "<group>"; };
+		5788726427185B30002640D7 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		578A5BF3271DA723007DAB52 /* ImageResizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizing.swift; sourceTree = "<group>"; };
 		578A5BF5271EBCDB007DAB52 /* VerifyingLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyingLoaderView.swift; sourceTree = "<group>"; };
 		578A5BF7271EC3EE007DAB52 /* LicenceValidatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenceValidatedView.swift; sourceTree = "<group>"; };
+		578A5BF9271EF557007DAB52 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		578DF2E927142CF40028911D /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		579D4C01270ED8F0009A598A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		579D4C03270EE81A009A598A /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				575D8F67271578D100F6B224 /* SwiftMessages in Frameworks */,
+				576C6F67271FFAB200535D5B /* NavigationStack in Frameworks */,
 				575D8F6A2715792F00F6B224 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,15 +155,15 @@
 			children = (
 				57B09BCA2716F7560041E5FF /* Models */,
 				576DFB1E2716CDD3000EF547 /* Services */,
-				57F152F8270DB48000DB2901 /* Info.plist */,
 				57F152C4270DB22800DB2901 /* Resources */,
 				579E355C270C669D007D65C6 /* Utils */,
 				579E3557270C3810007D65C6 /* Views */,
 				57F152C1270DA44100DB2901 /* ViewModels */,
 				579E3549270C32FB007D65C6 /* MoveApp.swift */,
+				57F152F8270DB48000DB2901 /* Info.plist */,
 				579E354D270C32FF007D65C6 /* Assets.xcassets */,
-				579E354F270C32FF007D65C6 /* Preview Content */,
 				5762D87D270DDD0700FB4072 /* LaunchScreen.storyboard */,
+				579E354F270C32FF007D65C6 /* Preview Content */,
 			);
 			path = Move;
 			sourceTree = "<group>";
@@ -179,7 +183,8 @@
 				57D15A3C2718313A0001DB19 /* LicenceVerification */,
 				579D4C00270ED8C7009A598A /* Authentication */,
 				579E354B270C32FB007D65C6 /* OnboardingView.swift */,
-				5788726427185B30002640D7 /* AuthCoordinatorView.swift */,
+				5788726427185B30002640D7 /* AuthCoordinator.swift */,
+				578A5BF9271EF557007DAB52 /* MenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 			packageProductDependencies = (
 				575D8F66271578D100F6B224 /* SwiftMessages */,
 				575D8F692715792F00F6B224 /* Alamofire */,
+				576C6F66271FFAB200535D5B /* NavigationStack */,
 			);
 			productName = Move;
 			productReference = 579E3546270C32FB007D65C6 /* Move.app */;
@@ -323,6 +329,7 @@
 			packageReferences = (
 				575D8F65271578D100F6B224 /* XCRemoteSwiftPackageReference "SwiftMessages" */,
 				575D8F682715792F00F6B224 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				576C6F65271FFAB200535D5B /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */,
 			);
 			productRefGroup = 579E3547270C32FB007D65C6 /* Products */;
 			projectDirPath = "";
@@ -367,7 +374,7 @@
 				57D15A3B271825180001DB19 /* Session.swift in Sources */,
 				579E355E270C66AB007D65C6 /* Constants.swift in Sources */,
 				57F152C3270DA4A700DB2901 /* OnboardingViewModel.swift in Sources */,
-				5788726527185B30002640D7 /* AuthCoordinatorView.swift in Sources */,
+				5788726527185B30002640D7 /* AuthCoordinator.swift in Sources */,
 				5784D3A4271D629300FB22C4 /* ScannerView.swift in Sources */,
 				578DF2EA27142CF40028911D /* MainButtonStyle.swift in Sources */,
 				57D15A472718447A0001DB19 /* NavBar.swift in Sources */,
@@ -385,6 +392,7 @@
 				57D15A452718357F0001DB19 /* TextStyles.swift in Sources */,
 				57B09BCE2716F8630041E5FF /* AuthResult.swift in Sources */,
 				57D15A41271831FD0001DB19 /* LicencePromptView.swift in Sources */,
+				578A5BFA271EF557007DAB52 /* MenuView.swift in Sources */,
 				579D4C04270EE81A009A598A /* FormField.swift in Sources */,
 				574DBD152715B191005F5F32 /* SignUpViewModel.swift in Sources */,
 				579E355B270C6123007D65C6 /* BackgroundViews.swift in Sources */,
@@ -615,6 +623,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		576C6F65271FFAB200535D5B /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/matteopuc/swiftui-navigation-stack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -627,6 +643,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 575D8F682715792F00F6B224 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		576C6F66271FFAB200535D5B /* NavigationStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 576C6F65271FFAB200535D5B /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */;
+			productName = NavigationStack;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

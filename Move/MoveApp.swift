@@ -6,26 +6,45 @@
 //
 
 import SwiftUI
+import Combine
+import NavigationStack
 
 @main
 struct MoveApp: App {
-    @State var showAuthFlow: Bool = false
+    
+    var onLogoutPublisher: PassthroughSubject<Void, Never> = Session.shared.onLogout
+    
+    @StateObject var navigationStackViewModel = NavigationStack()
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                ZStack {
-                    OnboardingView(onFinished: {
-                        showAuthFlow = true
-                    })
-                    NavigationLink(isActive: $showAuthFlow, destination: {
-                        AuthCoordinatorView(onFinished: {
-                            print("continue flow")
-                        })
-                        .navigationBarHidden(true)
-                    })
+            NavigationStackView(navigationStack: navigationStackViewModel) {
+                if Session.shared.isActive {
+                    MenuView()
+                } else {
+                    onboardingFlow
                 }
             }
+            .onReceive(onLogoutPublisher) { _ in
+                navigationStackViewModel.objectWillChange.send()
+            }
         }
+    }
+    
+    func handleAuthFlow() {
+        let view = AuthCoordinator(onFinished: {
+            navigationStackViewModel.push(MenuView(), withId: MenuView.id)
+        })
+        navigationStackViewModel.push(view)
+    }
+    
+    var onboardingFlow: some View {
+        OnboardingView(onFinished: {
+            handleAuthFlow()
+        })
+    }
+
+    var loggednInUserFlow: some View {
+        MenuView()
     }
 }
