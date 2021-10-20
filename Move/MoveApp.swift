@@ -20,7 +20,7 @@ struct MoveApp: App {
         WindowGroup {
             NavigationStackView(navigationStack: navigationStackViewModel) {
                 if Session.shared.isActive {
-                    MenuView()
+                    MapView()
                 } else {
                     onboardingFlow
                 }
@@ -33,7 +33,7 @@ struct MoveApp: App {
     
     func handleAuthFlow() {
         let view = AuthCoordinator(onFinished: {
-            navigationStackViewModel.push(MenuView(), withId: MenuView.id)
+            navigationStackViewModel.push(MapView(), withId: MapView.id)
         })
         navigationStackViewModel.push(view)
     }
@@ -42,9 +42,5 @@ struct MoveApp: App {
         OnboardingView(onFinished: {
             handleAuthFlow()
         })
-    }
-
-    var loggednInUserFlow: some View {
-        MenuView()
     }
 }
