@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NavBar: View {
     var title: String
-    var onBack: () -> Void
+    var onBack: (() -> Void)?
     
     var body: some View {
             Text(title)
@@ -25,19 +25,22 @@ struct NavBar: View {
                 .background(DefaultBackgroundView())
     }
     
-    var backButton: some View {
-        Button {
-            onBack()
-        } label: {
-            Image(systemName: "chevron.left")
-                .foregroundColor(Constants.Colors.primaryTextColor)
-                .frame(width: 24, height: 24)
-                .frame(maxHeight: .infinity)
-                .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 16))
-                .font(.Custom.semibold.with(size: 16))
-              
+    @ViewBuilder var backButton: some View {
+        if onBack != nil {
+            Button {
+                onBack?()
+            } label: {
+                Image(systemName: "chevron.left")
+                    .foregroundColor(Constants.Colors.primaryTextColor)
+                    .frame(width: 24, height: 24)
+                    .frame(maxHeight: .infinity)
+                    .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 16))
+                    .font(.Custom.semibold.with(size: 16))
+                
+            }
+        } else {
+            EmptyView()
         }
-
     }
 }
 

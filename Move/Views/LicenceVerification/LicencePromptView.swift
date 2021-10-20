@@ -17,7 +17,7 @@ struct LicencePromptView: View {
         ZStack {
             DefaultBackgroundView()
             VStack {
-                NavBar(title: "Driving Licence", onBack: {})
+                NavBar(title: "Driving Licence")
                 imageContainer
                 VStack {
                     textContainer
