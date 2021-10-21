@@ -17,9 +17,11 @@ struct APIService {
     static let urlRoot = "https://tapp-scooter-api.herokuapp.com"
     
     static var headers: HTTPHeaders {
-        return [
-            "Authorization": "Bearer \(Session.shared.accessToken ?? "")"
-        ]
+        var headers = HTTPHeaders()
+        if let token = Session.shared.accessToken {
+            headers.add(.authorization(bearerToken: token))
+        }
+        return headers
     }
     
     static func logIn(email: String, password: String, _ callback: @escaping (Result<AuthResult>) -> Void) {
@@ -44,7 +46,9 @@ struct APIService {
             }
     }
     
-    static func uploadDriversLicence(image: UIImage, _ callback: @escaping (Result<Void>) -> Void) {
+    static func uploadDriversLicence(image: UIImage, token: String, _ callback: @escaping (Result<Void>) -> Void) {
+        var headers = Self.headers
+        headers.add(HTTPHeader.authorization(bearerToken: token))
         let scaledImage = image.scalePreservingAspectRatio(maxEdgeSize: 1200)
         debugPrint("Scaled image size = width: \(scaledImage.size.width), height: \(scaledImage.size.height)")
         
@@ -57,6 +61,7 @@ struct APIService {
                 to: "\(urlRoot)/api/uploads", method: .post, headers: headers
             )
             .response { response in
+                debugPrint(response)
                 callback(decodeVoidResult(from: response))
             }
             .uploadProgress { progress in

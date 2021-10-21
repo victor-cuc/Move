@@ -41,7 +41,7 @@ struct LicencePromptView: View {
             Text("Before you can start riding")
                 .titleStyle()
                 .padding(.bottom, 16)
-            Text("Please take a photo or upload the front side of your driving licence so we can make sure that it is valid.")
+            Text("Please take a photo of your driving licence so we can make sure that it is valid.")
                 .descriptionStyle()
         }
         .padding(.bottom, 24)

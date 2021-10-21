@@ -36,7 +36,7 @@ struct MoveApp: App {
         let view = AuthCoordinator(onFinished: {
             navigationStackViewModel.push(MapCoordinatorView(), withId: MapCoordinatorView.id)
         })
-        navigationStackViewModel.push(view)
+        navigationStackViewModel.push(view, withId: AuthCoordinator.id)
     }
     
     var onboardingFlow: some View {

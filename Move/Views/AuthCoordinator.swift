@@ -33,6 +33,8 @@ extension AuthCoordinator {
 
 struct AuthCoordinator: View {
     
+    static let id = String(describing: Self.self)
+    
     @StateObject var viewModel: ViewModel = ViewModel()
     @StateObject var navigationViewModel: NavigationStack = NavigationStack()
     
@@ -44,12 +46,12 @@ struct AuthCoordinator: View {
             signUpScreen
         }
         .sheet(isPresented: $viewModel.showCamera) {
-            guard let image = viewModel.licencePhoto else {
+            guard let image = viewModel.licencePhoto, let token = viewModel.authResult?.authToken else {
                 return
             }
             viewModel.showCamera = false
             handleLicenceLoader()
-            APIService.uploadDriversLicence(image: image) { result in
+            APIService.uploadDriversLicence(image: image, token: token) { result in
                 switch result {
                 case .failure(let error):
                     ErrorHandler.handle(error: error)
