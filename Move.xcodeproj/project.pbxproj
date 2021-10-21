@@ -15,6 +15,7 @@
 		5762D87E270DDD0700FB4072 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5762D87D270DDD0700FB4072 /* LaunchScreen.storyboard */; };
 		576C6F67271FFAB200535D5B /* NavigationStack in Frameworks */ = {isa = PBXBuildFile; productRef = 576C6F66271FFAB200535D5B /* NavigationStack */; };
 		576C6F6927203D5C00535D5B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C6F6827203D5C00535D5B /* MapView.swift */; };
+		576C6F6C272048E100535D5B /* MapCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576C6F6B272048E100535D5B /* MapCoordinatorView.swift */; };
 		576DFB202716CDE4000EF547 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576DFB1F2716CDE4000EF547 /* APIService.swift */; };
 		577BE3F327102A1200DF3633 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577BE3F227102A1200DF3633 /* LogInView.swift */; };
 		5784D3A4271D629300FB22C4 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D3A3271D629300FB22C4 /* ScannerView.swift */; };
@@ -61,6 +62,7 @@
 		5762D877270DCBB100FB4072 /* StepIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepIndicatorView.swift; sourceTree = "<group>"; };
 		5762D87D270DDD0700FB4072 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		576C6F6827203D5C00535D5B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		576C6F6B272048E100535D5B /* MapCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinatorView.swift; sourceTree = "<group>"; };
 		576DFB1F2716CDE4000EF547 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		577BE3F227102A1200DF3633 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		5784D3A3271D629300FB22C4 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
@@ -117,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		576C6F6A272048CA00535D5B /* MapFlow */ = {
+			isa = PBXGroup;
+			children = (
+				576C6F6827203D5C00535D5B /* MapView.swift */,
+				576C6F6B272048E100535D5B /* MapCoordinatorView.swift */,
+			);
+			path = MapFlow;
+			sourceTree = "<group>";
+		};
 		576DFB1E2716CDD3000EF547 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,13 +192,13 @@
 		579E3557270C3810007D65C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				576C6F6A272048CA00535D5B /* MapFlow */,
 				57D15A42271834600001DB19 /* Components */,
 				57D15A3C2718313A0001DB19 /* LicenceVerification */,
 				579D4C00270ED8C7009A598A /* Authentication */,
 				579E354B270C32FB007D65C6 /* OnboardingView.swift */,
 				5788726427185B30002640D7 /* AuthCoordinator.swift */,
 				578A5BF9271EF557007DAB52 /* MenuView.swift */,
-				576C6F6827203D5C00535D5B /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -392,6 +403,7 @@
 				579E354A270C32FB007D65C6 /* MoveApp.swift in Sources */,
 				579D4C02270ED8F0009A598A /* SignUpView.swift in Sources */,
 				576DFB202716CDE4000EF547 /* APIService.swift in Sources */,
+				576C6F6C272048E100535D5B /* MapCoordinatorView.swift in Sources */,
 				57D15A452718357F0001DB19 /* TextStyles.swift in Sources */,
 				57B09BCE2716F8630041E5FF /* AuthResult.swift in Sources */,
 				576C6F6927203D5C00535D5B /* MapView.swift in Sources */,
@@ -536,6 +548,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Move/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access to scan your ID";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location will be displayed on the map and used for directions.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -568,6 +581,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Move/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access to scan your ID";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location will be displayed on the map and used for directions.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

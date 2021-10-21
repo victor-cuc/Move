@@ -21,9 +21,7 @@ struct MapView: View {
                 Text("Log out")
             }
             Text("Map here")
-            PushView(destination: MenuView(), destinationId: MenuView.id) {
-                Text("Menu")
-            }
+            
         }
     }
 }

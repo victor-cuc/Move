@@ -20,12 +20,13 @@ struct MoveApp: App {
         WindowGroup {
             NavigationStackView(navigationStack: navigationStackViewModel) {
                 if Session.shared.isActive {
-                    MapView()
+                    MapCoordinatorView()
                 } else {
                     onboardingFlow
                 }
             }
             .onReceive(onLogoutPublisher) { _ in
+                navigationStackViewModel.pop(to: PopDestination.root)
                 navigationStackViewModel.objectWillChange.send()
             }
         }
@@ -33,7 +34,7 @@ struct MoveApp: App {
     
     func handleAuthFlow() {
         let view = AuthCoordinator(onFinished: {
-            navigationStackViewModel.push(MapView(), withId: MapView.id)
+            navigationStackViewModel.push(MapCoordinatorView(), withId: MapCoordinatorView.id)
         })
         navigationStackViewModel.push(view)
     }
