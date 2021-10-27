@@ -16,6 +16,7 @@ class ErrorHandler {
             showErrorMessage(message: apiError.message)
         default:
             print(error.localizedDescription)
+            showErrorMessage(message: error.localizedDescription)
         }
     }
     

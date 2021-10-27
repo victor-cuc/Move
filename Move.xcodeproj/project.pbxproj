@@ -11,6 +11,9 @@
 		574DBD172715B6C4005F5F32 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DBD162715B6C4005F5F32 /* LogInViewModel.swift */; };
 		575D8F67271578D100F6B224 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 575D8F66271578D100F6B224 /* SwiftMessages */; };
 		575D8F6A2715792F00F6B224 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 575D8F692715792F00F6B224 /* Alamofire */; };
+		576213E72728276800478CAE /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576213E62728276800478CAE /* LocationViewModel.swift */; };
+		576213E92728334B00478CAE /* Scooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576213E82728334B00478CAE /* Scooter.swift */; };
+		576213EB272937C500478CAE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576213EA272937C500478CAE /* MapViewModel.swift */; };
 		5762D878270DCBB100FB4072 /* StepIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5762D877270DCBB100FB4072 /* StepIndicatorView.swift */; };
 		5762D87E270DDD0700FB4072 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5762D87D270DDD0700FB4072 /* LaunchScreen.storyboard */; };
 		576C6F67271FFAB200535D5B /* NavigationStack in Frameworks */ = {isa = PBXBuildFile; productRef = 576C6F66271FFAB200535D5B /* NavigationStack */; };
@@ -59,6 +62,9 @@
 /* Begin PBXFileReference section */
 		574DBD142715B191005F5F32 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		574DBD162715B6C4005F5F32 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		576213E62728276800478CAE /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		576213E82728334B00478CAE /* Scooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scooter.swift; sourceTree = "<group>"; };
+		576213EA272937C500478CAE /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		5762D877270DCBB100FB4072 /* StepIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepIndicatorView.swift; sourceTree = "<group>"; };
 		5762D87D270DDD0700FB4072 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		576C6F6827203D5C00535D5B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -124,6 +130,7 @@
 			children = (
 				576C6F6827203D5C00535D5B /* MapView.swift */,
 				576C6F6B272048E100535D5B /* MapCoordinatorView.swift */,
+				576213EA272937C500478CAE /* MapViewModel.swift */,
 			);
 			path = MapFlow;
 			sourceTree = "<group>";
@@ -211,6 +218,7 @@
 				57BF05B62719A7E0007359F9 /* ImagePicker.swift */,
 				5784D3A3271D629300FB22C4 /* ScannerView.swift */,
 				578A5BF3271DA723007DAB52 /* ImageResizing.swift */,
+				576213E62728276800478CAE /* LocationViewModel.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -220,6 +228,7 @@
 			children = (
 				57B09BCB2716F75E0041E5FF /* User.swift */,
 				57B09BCD2716F8630041E5FF /* AuthResult.swift */,
+				576213E82728334B00478CAE /* Scooter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,6 +395,7 @@
 			files = (
 				577BE3F327102A1200DF3633 /* LogInView.swift in Sources */,
 				57D15A3B271825180001DB19 /* Session.swift in Sources */,
+				576213E72728276800478CAE /* LocationViewModel.swift in Sources */,
 				579E355E270C66AB007D65C6 /* Constants.swift in Sources */,
 				57F152C3270DA4A700DB2901 /* OnboardingViewModel.swift in Sources */,
 				5788726527185B30002640D7 /* AuthCoordinator.swift in Sources */,
@@ -396,6 +406,7 @@
 				574DBD172715B6C4005F5F32 /* LogInViewModel.swift in Sources */,
 				57B09BD12716FF400041E5FF /* ErrorHandler.swift in Sources */,
 				578A5BF8271EC3EE007DAB52 /* LicenceValidatedView.swift in Sources */,
+				576213E92728334B00478CAE /* Scooter.swift in Sources */,
 				579E354C270C32FB007D65C6 /* OnboardingView.swift in Sources */,
 				578A5BF4271DA723007DAB52 /* ImageResizing.swift in Sources */,
 				57B09BCC2716F75E0041E5FF /* User.swift in Sources */,
@@ -405,6 +416,7 @@
 				576DFB202716CDE4000EF547 /* APIService.swift in Sources */,
 				576C6F6C272048E100535D5B /* MapCoordinatorView.swift in Sources */,
 				57D15A452718357F0001DB19 /* TextStyles.swift in Sources */,
+				576213EB272937C500478CAE /* MapViewModel.swift in Sources */,
 				57B09BCE2716F8630041E5FF /* AuthResult.swift in Sources */,
 				576C6F6927203D5C00535D5B /* MapView.swift in Sources */,
 				57D15A41271831FD0001DB19 /* LicencePromptView.swift in Sources */,

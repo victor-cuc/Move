@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 import SwiftUI
 import UIKit
+import CoreLocation
 
 typealias Result<Success> = Swift.Result<Success, Error>
 
@@ -70,6 +71,23 @@ struct APIService {
                     print("Upload finished")
                 }
             }
+        }
+    }
+    
+    static func getScooters(coordinate: CLLocationCoordinate2D, _ callback: @escaping (Result<[Scooter]>) -> Void) {
+        AF.request(
+            "\(urlRoot)/api/scooters",
+            method: .get,
+            parameters: [
+                "lat": coordinate.latitude,
+                "lon": coordinate.longitude
+            ],
+            encoder: URLEncodedFormParameterEncoder.default,
+            headers: headers
+        )
+        .validate()
+        .responseData { response in
+            callback(decodeResult(from: response))
         }
     }
     
