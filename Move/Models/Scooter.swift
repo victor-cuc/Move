@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-class Scooter: Decodable {
+class Scooter: Decodable, Identifiable {
     
     let id: String
     let isLocked: Bool

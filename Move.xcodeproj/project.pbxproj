@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57006EAA2729790700332E0A /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57006EA92729790700332E0A /* MapPin.swift */; };
 		574DBD152715B191005F5F32 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DBD142715B191005F5F32 /* SignUpViewModel.swift */; };
 		574DBD172715B6C4005F5F32 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DBD162715B6C4005F5F32 /* LogInViewModel.swift */; };
 		575D8F67271578D100F6B224 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 575D8F66271578D100F6B224 /* SwiftMessages */; };
@@ -60,6 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		57006EA92729790700332E0A /* MapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		574DBD142715B191005F5F32 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		574DBD162715B6C4005F5F32 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		576213E62728276800478CAE /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				5762D877270DCBB100FB4072 /* StepIndicatorView.swift */,
 				578DF2E927142CF40028911D /* MainButtonStyle.swift */,
 				57D15A442718357E0001DB19 /* TextStyles.swift */,
+				57006EA92729790700332E0A /* MapPin.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				57BF05B72719A7E0007359F9 /* ImagePicker.swift in Sources */,
 				574DBD172715B6C4005F5F32 /* LogInViewModel.swift in Sources */,
 				57B09BD12716FF400041E5FF /* ErrorHandler.swift in Sources */,
+				57006EAA2729790700332E0A /* MapPin.swift in Sources */,
 				578A5BF8271EC3EE007DAB52 /* LicenceValidatedView.swift in Sources */,
 				576213E92728334B00478CAE /* Scooter.swift in Sources */,
 				579E354C270C32FB007D65C6 /* OnboardingView.swift in Sources */,

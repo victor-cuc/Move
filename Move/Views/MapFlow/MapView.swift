@@ -25,23 +25,18 @@ struct MapView: View {
 //            Text("Map here")
 //
 //        }
-        
-        ZStack {
             Map(
                 coordinateRegion: $viewModel.region,
                 interactionModes: MapInteractionModes.all,
                 showsUserLocation: true,
-                userTrackingMode: $viewModel.userTrackingMode
-            )
+                userTrackingMode: $viewModel.userTrackingMode,
+                annotationItems: viewModel.scooters,
+                annotationContent: { scooter in
+                    MapAnnotation(coordinate: scooter.location) {
+                        MapPin(number: 3)
+                    }
+                })
                 .ignoresSafeArea()
-                
-            VStack {
-                ForEach(viewModel.scooters, id: \.id) { scooter in
-                    Text(scooter.code)
-                }
-            }
-        }
-
     }
 }
 
