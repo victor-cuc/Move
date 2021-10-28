@@ -61,7 +61,7 @@ struct MapCoordinatorView: View {
                         )
                 }
                 Spacer()
-                Text("City Name")
+                Text(viewModel.locationViewModel.placemark?.locality ?? "")
                     .font(.Custom.semibold.with(size: 17))
                     .foregroundColor(Constants.Colors.primaryTextColor)
                 Spacer()
