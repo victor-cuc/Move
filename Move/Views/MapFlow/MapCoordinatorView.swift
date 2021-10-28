@@ -50,15 +50,10 @@ struct MapCoordinatorView: View {
             HStack {
                 Button {
                 } label: {
-                    RoundedRectangle(cornerRadius: 15)
-                        .frame(width: 36, height: 36)
-                        .foregroundColor(Constants.Colors.backgroundDefaultColor)
-                        .overlay(
-                            Image("menu-icon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 18, height: 18)
-                        )
+                    Image("menu-icon")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 18, height: 18)
                 }
                 Spacer()
                 Text(viewModel.locationViewModel.placemark?.locality ?? "")
@@ -68,17 +63,13 @@ struct MapCoordinatorView: View {
                 Button {
                     viewModel.mapViewModel.userTrackingMode = .follow
                 } label: {
-                    RoundedRectangle(cornerRadius: 15)
-                        .frame(width: 36, height: 36)
-                        .foregroundColor(Constants.Colors.backgroundDefaultColor)
-                        .overlay(
-                            Image("current-location-icon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 24, height: 24)
-                        )
+                    Image("current-location-icon")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24, height: 24)
                 }
             }
+            .buttonStyle(SmallButtonStyle())
             .padding()
             
             Spacer()

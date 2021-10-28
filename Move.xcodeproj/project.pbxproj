@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		57006EAA2729790700332E0A /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57006EA92729790700332E0A /* MapPin.swift */; };
+		57006EAD272AD18200332E0A /* ScooterDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57006EAC272AD18200332E0A /* ScooterDetailCardView.swift */; };
+		57006EAF272AD64100332E0A /* SmallButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57006EAE272AD64100332E0A /* SmallButtonStyle.swift */; };
 		574DBD152715B191005F5F32 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DBD142715B191005F5F32 /* SignUpViewModel.swift */; };
 		574DBD172715B6C4005F5F32 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DBD162715B6C4005F5F32 /* LogInViewModel.swift */; };
 		575D8F67271578D100F6B224 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 575D8F66271578D100F6B224 /* SwiftMessages */; };
@@ -62,6 +64,8 @@
 
 /* Begin PBXFileReference section */
 		57006EA92729790700332E0A /* MapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
+		57006EAC272AD18200332E0A /* ScooterDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterDetailCardView.swift; sourceTree = "<group>"; };
+		57006EAE272AD64100332E0A /* SmallButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallButtonStyle.swift; sourceTree = "<group>"; };
 		574DBD142715B191005F5F32 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		574DBD162715B6C4005F5F32 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		576213E62728276800478CAE /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
@@ -127,6 +131,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57006EAB272AD17200332E0A /* Scooter */ = {
+			isa = PBXGroup;
+			children = (
+				57006EAC272AD18200332E0A /* ScooterDetailCardView.swift */,
+			);
+			path = Scooter;
+			sourceTree = "<group>";
+		};
 		576C6F6A272048CA00535D5B /* MapFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +213,7 @@
 		579E3557270C3810007D65C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				57006EAB272AD17200332E0A /* Scooter */,
 				576C6F6A272048CA00535D5B /* MapFlow */,
 				57D15A42271834600001DB19 /* Components */,
 				57D15A3C2718313A0001DB19 /* LicenceVerification */,
@@ -263,6 +276,7 @@
 				578DF2E927142CF40028911D /* MainButtonStyle.swift */,
 				57D15A442718357E0001DB19 /* TextStyles.swift */,
 				57006EA92729790700332E0A /* MapPin.swift */,
+				57006EAE272AD64100332E0A /* SmallButtonStyle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -398,6 +412,7 @@
 			files = (
 				577BE3F327102A1200DF3633 /* LogInView.swift in Sources */,
 				57D15A3B271825180001DB19 /* Session.swift in Sources */,
+				57006EAD272AD18200332E0A /* ScooterDetailCardView.swift in Sources */,
 				576213E72728276800478CAE /* LocationViewModel.swift in Sources */,
 				579E355E270C66AB007D65C6 /* Constants.swift in Sources */,
 				57F152C3270DA4A700DB2901 /* OnboardingViewModel.swift in Sources */,
@@ -415,6 +430,7 @@
 				578A5BF4271DA723007DAB52 /* ImageResizing.swift in Sources */,
 				57B09BCC2716F75E0041E5FF /* User.swift in Sources */,
 				5762D878270DCBB100FB4072 /* StepIndicatorView.swift in Sources */,
+				57006EAF272AD64100332E0A /* SmallButtonStyle.swift in Sources */,
 				579E354A270C32FB007D65C6 /* MoveApp.swift in Sources */,
 				579D4C02270ED8F0009A598A /* SignUpView.swift in Sources */,
 				576DFB202716CDE4000EF547 /* APIService.swift in Sources */,
