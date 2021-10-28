@@ -18,11 +18,12 @@ struct MapCoordinatorView: View {
         GeometryReader { proxy in
             ZStack {
                 VStack {
-                    navigationBar
+//                    navigationBar
                     MapView(viewModel: viewModel.mapViewModel)
                 }
-                MenuView()
-                    .offset(x: viewModel.showMenu ? 0 : -proxy.size.width )
+                overlay
+//                MenuView()
+//                    .offset(x: viewModel.showMenu ? 0 : -proxy.size.width )
             }
         }
         .onReceive(viewModel.locationViewModel.objectDidChange) { _ in
@@ -42,6 +43,46 @@ struct MapCoordinatorView: View {
             Text("Menu")
         }
         .frame(maxWidth: .infinity)
+    }
+    
+    var overlay: some View {
+        VStack {
+            HStack {
+                Button {
+                } label: {
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width: 36, height: 36)
+                        .foregroundColor(Constants.Colors.backgroundDefaultColor)
+                        .overlay(
+                            Image("menu-icon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 18, height: 18)
+                        )
+                }
+                Spacer()
+                Text("City Name")
+                    .font(.Custom.semibold.with(size: 17))
+                    .foregroundColor(Constants.Colors.primaryTextColor)
+                Spacer()
+                Button {
+                    viewModel.mapViewModel.userTrackingMode = .follow
+                } label: {
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width: 36, height: 36)
+                        .foregroundColor(Constants.Colors.backgroundDefaultColor)
+                        .overlay(
+                            Image("current-location-icon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 24, height: 24)
+                        )
+                }
+            }
+            .padding()
+            
+            Spacer()
+        }
     }
 }
 
