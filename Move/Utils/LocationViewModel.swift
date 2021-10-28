@@ -11,16 +11,16 @@ import Combine
 
 class LocationViewModel: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
-    let objectWillChange = PassthroughSubject<Void, Never>()
+    let objectDidChange = PassthroughSubject<Void, Never>()
     
     private let geocoder = CLGeocoder()
     
     @Published var status: CLAuthorizationStatus? {
-        willSet { objectWillChange.send() }
+        didSet { objectDidChange.send() }
     }
     
     @Published var location: CLLocation? {
-        willSet { objectWillChange.send() }
+        didSet { objectDidChange.send() }
     }
     
     override init() {

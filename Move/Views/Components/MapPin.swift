@@ -19,6 +19,7 @@ struct MapPin: View {
                 .frame(width: 22.4, height: 28)
             Text(String(number))
                 .font(.Custom.medium.with(size: 12))
+                .offset(x: 0, y: -3)
         }
     }
 }

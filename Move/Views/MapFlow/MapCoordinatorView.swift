@@ -25,7 +25,7 @@ struct MapCoordinatorView: View {
                     .offset(x: viewModel.showMenu ? 0 : -proxy.size.width )
             }
         }
-        .onReceive(viewModel.locationViewModel.objectWillChange) { _ in
+        .onReceive(viewModel.locationViewModel.objectDidChange) { _ in
             viewModel.handleLocationChange()
         }
         .onAppear {

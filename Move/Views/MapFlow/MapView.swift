@@ -26,7 +26,7 @@ struct MapView: View {
 //
 //        }
             Map(
-                coordinateRegion: $viewModel.region,
+                coordinateRegion: viewModel.regionBinding,
                 interactionModes: MapInteractionModes.all,
                 showsUserLocation: true,
                 userTrackingMode: $viewModel.userTrackingMode,
@@ -37,6 +37,11 @@ struct MapView: View {
                     }
                 })
                 .ignoresSafeArea()
+                .onReceive(viewModel.locationViewModel.objectDidChange) { _ in
+                    if viewModel.locationViewModel.location != nil {
+                        viewModel.setRegionToCurrentLocation()                        
+                    }
+                }
     }
 }
 
