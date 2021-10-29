@@ -39,4 +39,8 @@ class Scooter: Decodable, Identifiable {
             throw APIError(message: "Invalid format for location", code: -1)
         }
     }
+    
+//    var imageBatteryName: String {
+//
+//    }
 }

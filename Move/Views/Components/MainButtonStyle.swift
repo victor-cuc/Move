@@ -14,7 +14,7 @@ struct MainButtonStyle: ButtonStyle {
         HStack {
             configuration.label
                 .font(Font.Custom.bold.with(size: 16))
-                .padding()
+//                .padding()
                 .frame(maxHeight: 56)
                 .background(
                     RoundedRectangle(cornerRadius: 16.0)

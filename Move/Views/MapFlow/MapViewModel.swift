@@ -15,6 +15,7 @@ class MapViewModel: ObservableObject {
     @Published var scooters: [Scooter] = []
     var region: MKCoordinateRegion!
     var didUpdateRegionToCurrentLocation = false
+    var onSelectedScooter: ((Scooter) -> Void)?
     
     var currentLocationCoordinates: CLLocationCoordinate2D {
         locationViewModel.location?.coordinate ?? CLLocationCoordinate2D(latitude: 46.767758, longitude: 23.587569)

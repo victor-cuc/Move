@@ -91,10 +91,20 @@ extension MapCoordinatorView {
         @Published var locationViewModel: LocationViewModel
         @Published var mapViewModel: MapViewModel
         
+        
         init() {
             let locationViewModel = LocationViewModel()
             self.locationViewModel = locationViewModel
             self.mapViewModel = MapViewModel(locationViewModel: locationViewModel)
+
+            _ = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { timer in
+                timer.tolerance = 2.0
+                print("Refreshed scooter data")
+                self.requestScooters()
+            }
+            self.mapViewModel.onSelectedScooter = { [weak self] scooter in
+                self?.handleScooterSelection(scooter)
+            }
         }
         
         func toggleMenu(visible: Bool) {
@@ -103,25 +113,38 @@ extension MapCoordinatorView {
             }
         }
 
-        func handleLocationChange() {
+        @objc func handleLocationChange() {
             guard let location = locationViewModel.location else {
                 return
             }
             guard scooters.isEmpty else {
                 return
             }
-            APIService.getScooters(coordinate: location.coordinate) { result in
-                switch result {
-                case .success(let scooters):
-                    self.scooters = scooters
-                case .failure(let error):
-                    ErrorHandler.handle(error: error)
-                }
-            }
+            requestScooters()
         }
         
         func handlePlacemarkChange() {
             self.objectWillChange.send()
+        }
+        
+        func handleScooterSelection(_ scooter: Scooter) {
+            print(scooter.code)
+        }
+        
+        func requestScooters() {
+            guard let location = locationViewModel.location else {
+                return
+            }
+            APIService.getScooters(coordinate: location.coordinate) { result in
+                switch result {
+                case .success(let scooters):
+                        self.scooters = scooters.filter({ scooter in
+                            scooter.status == "available"
+                        })
+                case .failure(let error):
+                    ErrorHandler.handle(error: error)
+                }
+            }
         }
     }
 }

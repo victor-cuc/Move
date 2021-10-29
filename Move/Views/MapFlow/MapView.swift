@@ -33,7 +33,9 @@ struct MapView: View {
                 annotationItems: viewModel.scooters,
                 annotationContent: { scooter in
                     MapAnnotation(coordinate: scooter.location) {
-                        MapPin(number: 3)
+                        MapPin {
+                            viewModel.onSelectedScooter?(scooter)
+                        }
                     }
                 })
                 .ignoresSafeArea()

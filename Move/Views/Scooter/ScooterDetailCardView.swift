@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ScooterDetailCardView: View {
     
+//    let scooter: Scooter
+    
     var body: some View {
         VStack {
             HStack {
@@ -71,7 +73,29 @@ struct ScooterDetailCardView: View {
         .background(DefaultBackgroundView())
         .clipped()
     }
+    
+//    var batteryIcon: some View {
+//        let batteryLevel = scooter.batteryLevel
+//        var batteryLevelString: String
+//
+//        if batteryLevel >= 90 {
+//            batteryLevelString = "100"
+//        } else if batteryLevel >= 70 {
+//            batteryLevelString = "80"
+//        } else if batteryLevel >= 50 {
+//            batteryLevelString = "60"
+//        } else if batteryLevel >= 30 {
+//            batteryLevelString = "40"
+//        } else if batteryLevel >= 10 {
+//            batteryLevelString = "20"
+//        } else {
+//            batteryLevelString = "no"
+//        }
+//
+//        return Image("battery-\(batteryLevelString)-icon")
+//    }
 }
+
 
 struct ScooterDetailCardView_Previews: PreviewProvider {
     static var previews: some View {
