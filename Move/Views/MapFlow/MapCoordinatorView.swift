@@ -56,6 +56,7 @@ struct MapCoordinatorView: View {
                         .scaledToFit()
                         .frame(width: 18, height: 18)
                 }
+                .padding()
                 Spacer()
                 Text(viewModel.locationViewModel.placemark?.locality ?? "")
                     .font(.Custom.semibold.with(size: 17))
@@ -69,6 +70,7 @@ struct MapCoordinatorView: View {
                         .scaledToFit()
                         .frame(width: 24, height: 24)
                 }
+                .padding()
             }
             .buttonStyle(SmallButtonStyle())
             .padding()

@@ -14,41 +14,41 @@ struct ScooterDetailCardView: View {
     var body: some View {
         VStack {
             HStack {
-                ZStack {
+                ZStack(alignment: .leading) {
                     BackgroundRoundedRectangle()
-                        .frame(width: 152, height: 152)
+                        .frame(width: 180, height: 180)
                         .rotationEffect(.degrees(129))
-                        .offset(x: -5, y: -55)
+                        .offset(x: -50, y: -50)
                     Image("scooter")
                         .resizable()
                     .scaledToFit()
-                }
-                VStack (alignment: .trailing) {
-                    Text("Scooter")
-                        .opaqueStyle()
-                    Text("#1893")
-                        .font(.Custom.bold.with(size: 20))
                     HStack {
-                        Text("82%")
-                            .font(.Custom.medium.with(size: 14))
-                    }
-                    HStack {
-                        Button {
-                        } label: {
-                            Image("ring-icon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 24, height: 24)
-                        }.buttonStyle(SmallButtonStyle())
                         Spacer()
-                        Button {
-                        } label: {
-                            Image("location-icon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 24, height: 24)
-                                .offset(x: -1, y: 1)
-                        }.buttonStyle(SmallButtonStyle())
+                        VStack {
+                            HStack {
+                                Image("battery-icon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 20, height: 20)
+                                Text("82%")
+                                    .font(.Custom.medium.with(size: 14))
+                            }
+                            Button {
+                            } label: {
+                                Image("ring-icon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 24, height: 24)
+                            }.buttonStyle(SmallButtonStyle())
+                            Button {
+                            } label: {
+                                Image("location-icon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 24, height: 24)
+                                    .offset(x: -1, y: 1)
+                            }.buttonStyle(SmallButtonStyle())
+                        }
                     }
                 }
             }
@@ -69,6 +69,7 @@ struct ScooterDetailCardView: View {
             }
             .buttonStyle(MainButtonStyle())
         }
+        .padding()
         .foregroundColor(Constants.Colors.primaryTextColor)
         .background(DefaultBackgroundView())
         .clipped()
