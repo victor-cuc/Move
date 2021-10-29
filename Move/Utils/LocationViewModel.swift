@@ -36,7 +36,7 @@ class LocationViewModel: NSObject, ObservableObject {
     }
     
     @Published var placemark: CLPlacemark? {
-        willSet { objectWillChange.send() }
+        willSet { objectDidChange.send() }
     }
     
     private func geocode() {

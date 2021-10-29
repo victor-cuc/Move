@@ -28,6 +28,7 @@ struct MapCoordinatorView: View {
         }
         .onReceive(viewModel.locationViewModel.objectDidChange) { _ in
             viewModel.handleLocationChange()
+            viewModel.handlePlacemarkChange()
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -117,6 +118,10 @@ extension MapCoordinatorView {
                     ErrorHandler.handle(error: error)
                 }
             }
+        }
+        
+        func handlePlacemarkChange() {
+            self.objectWillChange.send()
         }
     }
 }

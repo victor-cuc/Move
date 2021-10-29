@@ -17,6 +17,7 @@ enum Constants {
         public static let darkColor = Color("DarkColor")
         public static let accentColor = Color("AccentColor")
         public static let errorColor = Color("ErrorColor")
+        public static let lightBlue = Color("LightBlue")
     }
     
     enum UserDefaults {

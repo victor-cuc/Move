@@ -12,9 +12,15 @@ struct ScooterDetailCardView: View {
     var body: some View {
         VStack {
             HStack {
-                Image("scooter")
-                    .resizable()
+                ZStack {
+                    BackgroundRoundedRectangle()
+                        .frame(width: 152, height: 152)
+                        .rotationEffect(.degrees(129))
+                        .offset(x: -5, y: -55)
+                    Image("scooter")
+                        .resizable()
                     .scaledToFit()
+                }
                 VStack (alignment: .trailing) {
                     Text("Scooter")
                         .opaqueStyle()
@@ -63,6 +69,7 @@ struct ScooterDetailCardView: View {
         }
         .foregroundColor(Constants.Colors.primaryTextColor)
         .background(DefaultBackgroundView())
+        .clipped()
     }
 }
 
