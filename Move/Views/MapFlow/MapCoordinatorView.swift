@@ -75,7 +75,16 @@ struct MapCoordinatorView: View {
                     print("Unlock scooter with code \(scooter.code)")
                 },
                 onRing: {
-                    print("ring scooter with code \(scooter.code)")
+                    if let currentCoordinate = viewModel.locationViewModel.location?.coordinate {
+                        APIService.ringScooter(coordinate: currentCoordinate, scooter: scooter) { result in
+                            switch result {
+                                case .success(let result):
+                                    print(result)
+                                case .failure(let error):
+                                    ErrorHandler.handle(error: error)
+                            }
+                        }
+                    }
                 },
                 onRequestDirections: {
                     print("Directions to scooter with code \(scooter.code)")

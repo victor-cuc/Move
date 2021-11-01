@@ -112,6 +112,20 @@ struct APIService {
         }
     }
     
+    static func ringScooter(coordinate: CLLocationCoordinate2D, scooter: Scooter, _ callback: @escaping (Result<Void>) -> Void) {
+        AF.request(
+            "\(urlRoot)/api/scooters/ping",
+            method: .get,
+            parameters: ["lat": String(coordinate.latitude), "lon": String(coordinate.longitude), "code": scooter.code],
+            encoder: URLEncodedFormParameterEncoder.default,
+            headers: headers)
+            .validate()
+            .response { response in
+                debugPrint(response)
+                callback(decodeVoidResult(from: response))
+            }
+    }
+    
     static func decodeVoidResult(from response: AFDataResponse<Data?>) -> Result<Void> {
         if let error = response.error {
             if let data = response.data, let apiError = try? JSONDecoder().decode(APIError.self, from: data) {
