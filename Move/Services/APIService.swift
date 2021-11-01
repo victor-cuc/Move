@@ -91,6 +91,27 @@ struct APIService {
         }
     }
     
+    static func getGeocodedScooters(coordinate: CLLocationCoordinate2D, _ callback: @escaping (Result<[Scooter]>) -> Void) {
+        
+        getScooters(coordinate: coordinate) { result in
+            switch result {
+                case .success(let scooters):
+                    var counter = 0
+                    
+                    for scooter in scooters {
+                        scooter.geocode {
+                            counter += 1
+                            if counter == scooters.count {
+                                callback(result)
+                            }
+                        }
+                    }
+                case .failure(let error):
+                    callback(.failure(error))
+            }
+        }
+    }
+    
     static func decodeVoidResult(from response: AFDataResponse<Data?>) -> Result<Void> {
         if let error = response.error {
             if let data = response.data, let apiError = try? JSONDecoder().decode(APIError.self, from: data) {

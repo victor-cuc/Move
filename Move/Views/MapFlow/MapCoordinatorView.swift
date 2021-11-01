@@ -16,15 +16,15 @@ struct MapCoordinatorView: View {
     
     var body: some View {
         GeometryReader { proxy in
-            ZStack {
-                VStack {
-//                    navigationBar
-                    MapView(viewModel: viewModel.mapViewModel)
+            MapView(viewModel: viewModel.mapViewModel)
+                .overlay {
+                    navigationBar
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                 }
-                overlay
-//                MenuView()
-//                    .offset(x: viewModel.showMenu ? 0 : -proxy.size.width )
-            }
+                .overlay {
+                    selectedScooterCard
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                }
         }
         .onReceive(viewModel.locationViewModel.objectDidChange) { _ in
             viewModel.handleLocationChange()
@@ -38,44 +38,53 @@ struct MapCoordinatorView: View {
     }
     
     var navigationBar: some View {
-        Button {
-            viewModel.toggleMenu(visible: true)
-        } label: {
-            Text("Menu")
+        HStack {
+            Button {
+            } label: {
+                Image("menu-icon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 18, height: 18)
+            }
+            .padding()
+            Spacer()
+            Text(viewModel.locationViewModel.placemark?.locality ?? "")
+                .font(.Custom.semibold.with(size: 17))
+                .foregroundColor(Constants.Colors.primaryTextColor)
+            Spacer()
+            Button {
+                viewModel.mapViewModel.userTrackingMode = .follow
+            } label: {
+                Image("current-location-icon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+            }
+            .padding()
         }
-        .frame(maxWidth: .infinity)
+        .buttonStyle(SmallButtonStyle())
+        .padding(.horizontal)
     }
     
-    var overlay: some View {
-        VStack {
-            HStack {
-                Button {
-                } label: {
-                    Image("menu-icon")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 18, height: 18)
-                }
-                .padding()
-                Spacer()
-                Text(viewModel.locationViewModel.placemark?.locality ?? "")
-                    .font(.Custom.semibold.with(size: 17))
-                    .foregroundColor(Constants.Colors.primaryTextColor)
-                Spacer()
-                Button {
-                    viewModel.mapViewModel.userTrackingMode = .follow
-                } label: {
-                    Image("current-location-icon")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 24, height: 24)
-                }
-                .padding()
-            }
-            .buttonStyle(SmallButtonStyle())
-            .padding()
-            
-            Spacer()
+    @ViewBuilder
+    var selectedScooterCard: some View {
+        if let scooter = viewModel.selectedScooter {
+            ScooterDetailCardView(
+                scooter: scooter,
+                onUnlock: {
+                    print("Unlock scooter with code \(scooter.code)")
+                },
+                onRing: {
+                    print("ring scooter with code \(scooter.code)")
+                },
+                onRequestDirections: {
+                    print("Directions to scooter with code \(scooter.code)")
+                })
+                .cornerRadius(29)
+                .shadow(color: Color(white: 0, opacity: 0.3), radius: 30, x: 7, y: 7)
+                .frame(width: 280, height: 340)
+                .id(UUID())
+                .transition(.opacity.combined(with: .scale))
         }
     }
 }
@@ -92,6 +101,7 @@ extension MapCoordinatorView {
         @Published var showMenu: Bool = false
         @Published var locationViewModel: LocationViewModel
         @Published var mapViewModel: MapViewModel
+        @Published var selectedScooter: Scooter?
         
         
         init() {
@@ -130,14 +140,17 @@ extension MapCoordinatorView {
         }
         
         func handleScooterSelection(_ scooter: Scooter) {
-            print(scooter.code)
+            withAnimation(.easeInOut) {
+                self.selectedScooter = scooter
+            }
+            
         }
         
         func requestScooters() {
             guard let location = locationViewModel.location else {
                 return
             }
-            APIService.getScooters(coordinate: location.coordinate) { result in
+            APIService.getGeocodedScooters(coordinate: location.coordinate) { result in
                 switch result {
                 case .success(let scooters):
                         self.scooters = scooters.filter({ scooter in

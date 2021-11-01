@@ -84,7 +84,7 @@
 		578A5BF3271DA723007DAB52 /* ImageResizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResizing.swift; sourceTree = "<group>"; };
 		578A5BF5271EBCDB007DAB52 /* VerifyingLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyingLoaderView.swift; sourceTree = "<group>"; };
 		578A5BF7271EC3EE007DAB52 /* LicenceValidatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenceValidatedView.swift; sourceTree = "<group>"; };
-		578A5BF9271EF557007DAB52 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		578A5BF9271EF557007DAB52 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuView.swift; path = Move/Views/MenuView.swift; sourceTree = SOURCE_ROOT; };
 		578DF2E927142CF40028911D /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		579D4C01270ED8F0009A598A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		579D4C03270EE81A009A598A /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
@@ -215,6 +215,7 @@
 		579E3557270C3810007D65C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				57A885E1272FE56F00164E82 /* Menu */,
 				57006EAB272AD17200332E0A /* Scooter */,
 				576C6F6A272048CA00535D5B /* MapFlow */,
 				57D15A42271834600001DB19 /* Components */,
@@ -222,7 +223,6 @@
 				579D4C00270ED8C7009A598A /* Authentication */,
 				579E354B270C32FB007D65C6 /* OnboardingView.swift */,
 				5788726427185B30002640D7 /* AuthCoordinator.swift */,
-				578A5BF9271EF557007DAB52 /* MenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,6 +238,14 @@
 				576213E62728276800478CAE /* LocationViewModel.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		57A885E1272FE56F00164E82 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				578A5BF9271EF557007DAB52 /* MenuView.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		57B09BCA2716F7560041E5FF /* Models */ = {

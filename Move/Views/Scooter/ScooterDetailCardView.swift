@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ScooterDetailCardView: View {
     
-//    let scooter: Scooter
+    let scooter: Scooter
+    let onUnlock: () -> Void
+    let onRing: () -> Void
+    let onRequestDirections: () -> Void
     
     var body: some View {
         VStack {
@@ -26,14 +30,15 @@ struct ScooterDetailCardView: View {
                         Spacer()
                         VStack {
                             HStack {
-                                Image("battery-icon")
+                                batteryIcon
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 20, height: 20)
-                                Text("82%")
+                                Text("\(String(scooter.batteryLevel))%")
                                     .font(.Custom.medium.with(size: 14))
                             }
                             Button {
+                                onRing()
                             } label: {
                                 Image("ring-icon")
                                     .resizable()
@@ -41,6 +46,7 @@ struct ScooterDetailCardView: View {
                                     .frame(width: 24, height: 24)
                             }.buttonStyle(SmallButtonStyle())
                             Button {
+                                onRequestDirections()
                             } label: {
                                 Image("location-icon")
                                     .resizable()
@@ -57,12 +63,13 @@ struct ScooterDetailCardView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
-                Text("Address here. Needs to be left aligned!")
+                Text(scooter.address)
                     .font(.Custom.medium.with(size: 14))
                     .frame(maxWidth: .infinity)
                     .frame(alignment: .leading)
             }
             Button {
+                onUnlock()
             } label: {
                 Text("Unlock")
                     .frame(maxWidth: .infinity)
@@ -75,34 +82,36 @@ struct ScooterDetailCardView: View {
         .clipped()
     }
     
-//    var batteryIcon: some View {
-//        let batteryLevel = scooter.batteryLevel
-//        var batteryLevelString: String
-//
-//        if batteryLevel >= 90 {
-//            batteryLevelString = "100"
-//        } else if batteryLevel >= 70 {
-//            batteryLevelString = "80"
-//        } else if batteryLevel >= 50 {
-//            batteryLevelString = "60"
-//        } else if batteryLevel >= 30 {
-//            batteryLevelString = "40"
-//        } else if batteryLevel >= 10 {
-//            batteryLevelString = "20"
-//        } else {
-//            batteryLevelString = "no"
-//        }
-//
-//        return Image("battery-\(batteryLevelString)-icon")
-//    }
+
+    
+    var batteryIcon: Image {
+        let batteryLevel = scooter.batteryLevel
+        var batteryLevelString: String
+
+        if batteryLevel >= 90 {
+            batteryLevelString = "100"
+        } else if batteryLevel >= 70 {
+            batteryLevelString = "80"
+        } else if batteryLevel >= 50 {
+            batteryLevelString = "60"
+        } else if batteryLevel >= 30 {
+            batteryLevelString = "40"
+        } else if batteryLevel >= 10 {
+            batteryLevelString = "20"
+        } else {
+            batteryLevelString = "no"
+        }
+
+        return Image("battery-\(batteryLevelString)-icon")
+    }
 }
 
 
 struct ScooterDetailCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ScooterDetailCardView()
+        ScooterDetailCardView(scooter: Scooter(), onUnlock: {}, onRing: {}, onRequestDirections: {})
             .frame(width: 250, height: 315)
-        ScooterDetailCardView()
+        ScooterDetailCardView(scooter: Scooter(), onUnlock: {}, onRing: {}, onRequestDirections: {})
             .frame(width: 250, height: 315)
             .preferredColorScheme(.dark)
     }

@@ -16,6 +16,12 @@ class Scooter: Decodable, Identifiable {
     let batteryLevel: Int
     let location: CLLocationCoordinate2D // Maybe change
     let status: String // Maybe make an enum
+    var placemark: CLPlacemark?
+    var address: String {
+        let street = placemark?.thoroughfare ?? "N/A"
+        let number = placemark?.subThoroughfare ?? ""
+        return "\(street) \(number)"
+    }
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -38,6 +44,25 @@ class Scooter: Decodable, Identifiable {
         } else {
             throw APIError(message: "Invalid format for location", code: -1)
         }
+    }
+    
+    init() {
+        id = "1111"
+        isLocked = false
+        code = "0000"
+        batteryLevel = 88
+        location = CLLocationCoordinate2D(latitude: 46.753579, longitude: 23.584384)
+        status = "available"
+    }
+    
+    func geocode(_ callback: @escaping () -> Void) {
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(CLLocation(latitude: location.latitude, longitude: location.longitude), completionHandler: { (places, error) in
+            if error == nil {
+                self.placemark = places?[0]
+            }
+            callback()
+        })
     }
     
 //    var imageBatteryName: String {
