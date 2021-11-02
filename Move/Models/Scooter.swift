@@ -46,6 +46,8 @@ class Scooter: Decodable, Identifiable {
         }
     }
     
+    // Dummy init
+    
     init() {
         id = "1111"
         isLocked = false
