@@ -7,6 +7,7 @@
 
 import SwiftUI
 import NavigationStack
+import MapKit
 
 struct MapCoordinatorView: View {
     
@@ -87,7 +88,11 @@ struct MapCoordinatorView: View {
                     }
                 },
                 onRequestDirections: {
-                    print("Directions to scooter with code \(scooter.code)")
+                    if let placemark = scooter.placemark {
+                        let destination = MKMapItem(placemark: MKPlacemark(placemark: placemark))
+                        destination.name = "Scooter location"
+                        destination.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking])
+                    }
                 })
                 .cornerRadius(29)
                 .shadow(color: Color(white: 0, opacity: 0.3), radius: 30, x: 7, y: 7)
